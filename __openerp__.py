@@ -10,7 +10,7 @@
     'depends': ['base', 'hr', "hr_payroll", "hr_contract"],
     'data': [
         "wizard/set_structure_contract.xml",
-    	"views/hr_payslip_inh.xml",
+    	#"views/hr_payslip_inh.xml",
         "views/concet_deduction_allowances.xml",
         "wizard/increased_salary_view.xml",
         "wizard/set_structure_contract.xml",
