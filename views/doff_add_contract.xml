@@ -45,13 +45,14 @@
         <page string="Historial deducciones y Beneficios">
         <group>
             <group>
-        <button class="oe_stat_button"
-        icon="fa-bars"
-        type="action" name="%(action_hr_historial_contract)d"
-        string="Historial Deducciones">
-        </button>
+   
             </group>
             <group>
+                     <button class="oe_stat_button"
+        icon="fa-bars"
+        type="action" name="%(action_hr_historial_contract)d"
+        string="Historial">
+        </button>
             </group>
         </group>
             <field name="historical_ids"/>
