@@ -17,6 +17,9 @@
 <field name="model">hr.wage.paying</field>
 <field name="arch"  type="xml">
 <form string="Salario y deducciones">
+<header>
+    <field name="state" widget="statusbar" nolabel="1"/>
+</header>
 <sheet> 
     <group>
         <group>

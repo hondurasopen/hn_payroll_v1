@@ -1,12 +1,36 @@
 # -*- coding: utf-8 -*-
-from openerp import models, fields, api 
+from openerp import models, fields, api, _
+from openerp.exceptions import except_orm, Warning, RedirectWarning_
 
 class HrPrePayroll(models.Model):
     _name = 'hr.wage.paying'
 
     start_date = fields.Date("Fecha inicial")
     end_date = fields.Date("Fecha final")
+    name = fields.Text("Descripción")
+    state = fields.Selection( [('draft', 'Borrador'), ('done', 'Hecho')], string="Estado", default='draft')
+    payroll_type = fields.Selection( [('bi-weekly', 'Quincenal'), ('monthly', 'Mensual')], string="Tipo", default='bi-weekly')
     employee_detail_ids = fields.One2many("hr.wage.paying.line", "parent_id", "Detalle de empleados")
+
+    @api.multi
+    def get_employee(self):
+    	if self.start_date > self.end_date:
+            raise Warning(_('La fecha de inicio es mayor fecha final'))
+        employee_obj = self.env["hr.employee"].search([('active','= ', True)])
+        for l in employee_obj:
+        	line_obj = self.env["hr.wage.paying.line"]
+        	vals = {
+        		'employee_id': l.id,
+        	}
+        	contract_obj = self.env["hr.contract"].search([('employee_id', '', l.id)], limit=1)
+        	if self.payroll_type == 'bi-weekly':
+        		vals["wage"] = contract_obj.wage / 2
+        	if self.payroll_type == 'monthly':
+        		vals["wage"] = contract_obj.wage
+
+        	line_obj.create(vals)
+
+
 
 
 
