@@ -41,7 +41,7 @@ class HrPrePayroll(models.Model):
     @api.depends("gross_wage", "loan_fee", "saving_fee", "amount_isr", "amount_ipv", "other_incomes", "other_deductions")
     def _compute_amount(self):
     	self.gross_wage = self.wage + self.other_incomes 
-    	self.amount_deduction = self.loan_fee + self.saving_fee + self.amount_isr + self.amount_ipv + self.other_deduction
+    	self.amount_deduction = self.loan_fee + self.saving_fee + self.amount_isr + self.amount_ipv + self.other_deductions
     	self.amount_net = self.gross_wage - self.amount_deduction
 
     parent_id = fields.Many2one("hr.wage.paying", "Pago")
