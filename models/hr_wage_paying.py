@@ -53,9 +53,8 @@ class HrPrePayroll(models.Model):
                 'debit': self.net_total,
                 'credit': 0.0,
                 'amount_currency': 0.0,
-                'name': 'Liquidación 60 grados',
-                'account_id': self.supplier_id.property_account_payable.id,
-                'partner_id': self.supplier_id.id,
+                'name': 'Sueldos y Salarios',
+                'account_id': self.journal_id.property_account_payable.id,
                 'date': self.end_date,
             }
             lineas.append((0, 0, vals_debit))
