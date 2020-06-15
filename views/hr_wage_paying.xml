@@ -25,11 +25,13 @@
     <group>
         <group>
             <field name="start_date"/>
+            <field name="payroll_type"/>
         </group>
         <group>
             <field name="end_date"/>
         </group>
     </group>
+    <field name="name" placeholder="Nómina primera quincena"/>
     <notebook>
         <page string="Nómina de empleados">
             <field name="employee_detail_ids">
@@ -41,9 +43,10 @@
                     <field name="saving_fee"/>
                     <field name="amount_isr"/>
                     <field name="amount_ipv"/>
-                    <field name="gross_wage"/>
                     <field name="another_deduction"/>
-                    <field name="amount_net"/>
+                    <field name="gross_wage"/>
+                    <field name="amount_deduction"/>
+                    <field name="amount_net" sum="Total"/>
                 </tree>
             </field>
         </page>
