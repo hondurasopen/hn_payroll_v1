@@ -12,6 +12,7 @@ class HrPrePayroll(models.Model):
     payroll_type = fields.Selection( [('bi-weekly', 'Quincenal'), ('monthly', 'Mensual')], string="Tipo", default='bi-weekly')
     employee_detail_ids = fields.One2many("hr.wage.paying.line", "parent_id", "Detalle de empleados")
     journal_id = fields.Many2one("account.journal", "Diarios")
+    move_id = fields.Many2one("account.move", "Asiento")
 
 
     net_total = fields.Float("Neto salarios")
@@ -42,15 +43,14 @@ class HrPrePayroll(models.Model):
             lineas = []
             vals_debit = {
                 'debit': 0.0,
-                'credit': self.monto_nota,
+                'credit': self.net_total,
                 'amount_currency': 0.0,
-                'name': 'Liquidación 60 grados',
+                'name': 'Sueldos y Salarios',
                 'account_id': self.journal_id.default_credit_account_id.id,
-                'partner_id': self.supplier_id.id,
                 'date': self.end_date,
             }
             vals_credit = {
-                'debit': self.monto_nota,
+                'debit': self.net_total,
                 'credit': 0.0,
                 'amount_currency': 0.0,
                 'name': 'Liquidación 60 grados',
@@ -63,7 +63,7 @@ class HrPrePayroll(models.Model):
             vals = {
                 'journal_id': self.journal_id.id,
                 'date': self.end_date,
-                'ref': 'Liquidación de 60 grados',
+                'ref': 'Sueldos y Salarios',
                 'period_id': period_id.id,
                 'line_id': lineas,
             }
@@ -71,6 +71,7 @@ class HrPrePayroll(models.Model):
             if id_move :
                 self.write({'state': 'done'})
                 self.move_id = id_move.id
+            self.write({'state': 'done'})
 
     @api.multi
     def get_employee(self):

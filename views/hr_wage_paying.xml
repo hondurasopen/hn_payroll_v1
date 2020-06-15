@@ -19,7 +19,9 @@
 <field name="arch"  type="xml">
 <form string="Salario y deducciones">
 <header>
+    
      <button name="get_employee" type="object" string="Obtener Empleados" states="draft" class="oe_highlight" />
+      <button name="create_journal_entrie" type="object" string="Aporbar" states="validated" class="oe_highlight" />
      <button name="set_amounts" type="object" string="Procesar Nómina" states="draft" class="oe_highlight" />
     <field name="state" widget="statusbar" nolabel="1"/>
 </header>
@@ -31,6 +33,8 @@
         </group>
         <group>
             <field name="end_date" required="1"/>
+            <field name="journal_id" />
+            <field name="move_id" />
         </group>
     </group>
 
@@ -56,7 +60,6 @@
         <group>
         <group>
                  <field name="net_total"/>
-        <field name="payroll_type"/>
         </group>
         <group>
                  <field name="total_isr" />
