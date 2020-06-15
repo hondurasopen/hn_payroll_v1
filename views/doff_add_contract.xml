@@ -30,7 +30,7 @@
 <field name="model">hr.contract</field>
 <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
 <field name="arch"  type="xml">
-	<xpath expr="//div[@name='title']" position="before"> 
+	<xpath expr="//div[@class='oe_title']" position="after"> 
     <div class="oe_button_box" name="button_box">
 		<button class="oe_stat_button"
 		icon="fa-bars"
