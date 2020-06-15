@@ -16,6 +16,8 @@ class HrPrePayroll(models.Model):
     def get_employee(self):
     	if self.start_date > self.end_date:
             raise Warning(_('La fecha de inicio es mayor fecha final'))
+        if self.employee_detail_ids:
+        	self.employee_detail_ids.unlink()
         employee_obj = self.env["hr.employee"].search([('active','=', True)])
         for l in employee_obj:
         	line_obj = self.env["hr.wage.paying.line"]
