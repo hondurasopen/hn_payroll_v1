@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="hn_structure_contract_wizard_tree_view" model="ir.ui.view">
+    <field name="name">payroll.hn.structure.contract.wizard.tree.view</field>
+    <field name="model">payroll.hn.structure.contract.wizard</field>
+    <field name="arch" type="xml">
+        <tree string="Estructura">
+            <field name="structure_id"/>
+            <field name="department_id"/> 
+        </tree>
+    </field>
+    </record>
+
+    <!-- Import Inventory Wizard form -->
+    <record id="payroll_hn_increased_salary_wizard_form_view" model="ir.ui.view">
+        <field name="name">payroll.hn.increased.salary.wizard.form.view</field>
+        <field name="model">payroll.hn.structure.contract.wizard</field>
+        <field name="arch" type="xml">
+            <form string="increased Salary">
+            <group>
+                    <group>
+                        <field name="structure_id" />
+                    </group>
+                    <group>
+                        <field name="department_id" />
+                         
+                    </group>
+            </group>
+            <footer>
+                <button name="set_structure" type="object"  string="Establecer Estructura" class="oe_highlight"/>
+                <button special="cancel" string="Cancel"/>
+            </footer>
+           </form>
+        </field>
+    </record>
+
+    <!--  Action of Import inventory wizard -->
+    <record model="ir.actions.act_window" id="action_payroll_hn_structure_contract_wizard">
+    <field name="name">Estructuras por departamento</field>
+    <field name="res_model">payroll.hn.structure.contract.wizard</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="payroll_hn_increased_salary_wizard_form_view"/>
+    <field name="target">new</field>
+    </record>
+
+  <menuitem string="Estructuras por departamento" id="menu_set_structure_department" parent="hr_payroll.menu_hr_payroll_configuration" action="action_payroll_hn_structure_contract_wizard" sequence="10"/>
+
+</odoo>

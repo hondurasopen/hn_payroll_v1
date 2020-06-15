@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<menuitem id="rrhh_menu_root_doff" 
+		name="Capital Humano" 
+		sequence="1" 
+		web_icon="rrhh_MGM,static/description/icon.png"/>
+
+	<menuitem id="rrhh_menu_main_capacitacion" 
+		name="Capacitaciones" 
+		sequence="2" 
+		parent="rrhh_menu_root_doff" 
+    />
+
+    <menuitem id="menu_settings_rrhh" 
+		name="Configuraciones" 
+		sequence="100" 
+		parent="rrhh_menu_root_doff" 
+    />
+
+
+
+</odoo>

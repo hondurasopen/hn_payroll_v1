@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payroll_hn_increased_salary_wizard_tree_view" model="ir.ui.view">
+    <field name="name">payroll.hn.increased.salary.wizard.tree.view</field>
+    <field name="model">payroll.hn.increased.salary.wizard</field>
+    <field name="arch" type="xml">
+        <tree string="Consumo de tripas">
+            <field name="department_id"/>
+            <field name="increased_salary"/>
+            <field name="confirmation"/> 
+        </tree>
+    </field>
+    </record>
+
+    <!-- Import Inventory Wizard form -->
+    <record id="payroll_hn_increased_salary_wizard_form_view" model="ir.ui.view">
+        <field name="name">payroll.hn.increased.salary.wizard.form.view</field>
+        <field name="model">payroll.hn.increased.salary.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="increased Salary">
+            <header>
+                <button name="get_employees" type="object" string="Obtener empleados" class="oe_highlight"/>
+                <button name="set_increased_salary" type="object" string="Aplicar incrementos" class="oe_highlight"/>
+            </header>
+            <sheet> 
+            <group>
+                    <group>
+                        <field name="department_id" />
+                         <field name="confirmation" readonly="1"/> 
+                    </group>
+                    <group>
+                        <field name="increased_salary" />
+                    </group>
+            </group>
+            <notebook>
+                <page string="Salarios por empleados">
+                    <field name="employee_ids" readonly="1">
+                        <tree>
+                            <field name="employee_id"/>
+                            <field name="wage"/>
+                            <field name="new_wage"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+            </sheet>
+           </form>
+        </field>
+    </record>
+
+    <!--  Action of Import inventory wizard -->
+    <record model="ir.actions.act_window" id="action_payroll_hn_increased_salary_wizard">
+    <field name="name">Incremento Salariales</field>
+    <field name="res_model">payroll.hn.increased.salary.wizard</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Incremento salarial</p>
+    </field>
+    </record>
+
+    <menuitem string="Incrementos salariales" name="Incrementos salariales" id="wizard_increased_salary_menu_root" parent="hr.menu_hr_root" sequence="13"/>
+  <menuitem string="Incrementos salariales" id="wizard_increased_salary_menu" parent="wizard_increased_salary_menu_root" action="action_payroll_hn_increased_salary_wizard" sequence="10"/>
+
+</odoo>

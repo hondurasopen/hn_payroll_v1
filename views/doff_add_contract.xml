@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<record id="hr_historial_contract_view_tree" model="ir.ui.view">
+<field name="name">hr.historial.contract.tree.view</field>
+<field name="model">hr.historial.contract</field>                     
+<field name="arch" type="xml">
+     <tree string="Historial deducciones" delete="0" create="0" edit="0">
+        <field name="name" />
+        <field name="concept_type" />
+        <field name="amount_fee"  sum="Total"/>
+        <field name="number_fee"/>
+        <field name="payment_date" />
+     </tree>                
+</field>
+</record>
+
+ <record model="ir.actions.act_window" id="action_hr_historial_contract">
+    <field name="name">Historial</field>
+    <field name="res_model">hr.historial.contract</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain"> [('contract_id', '=', active_id)]</field>
+</record>
+
+
+<record id="payroll_hn_contrat_form_inherit" model="ir.ui.view">
+<field name="name">contrat.form.inherit</field>
+<field name="model">hr.contract</field>
+<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+<field name="arch"  type="xml">
+	<xpath expr="//div[@name='title']" position="before"> 
+    <div class="oe_button_box" name="button_box">
+		<button class="oe_stat_button"
+		icon="fa-bars"
+		type="action" name="%(action_hr_historial_contract)d"
+		string="Historial Deducciones">
+		</button>
+    </div>
+   </xpath>
+    <notebook position="inside">
+       <page string="Beneficios y deducciones">
+           <field name="allowences_ids"/>
+        </page>  
+    </notebook>  
+    </field>
+</record>   
+</odoo>

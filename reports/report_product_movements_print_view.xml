@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="report_product_movements_view">
+			 <t t-call="web.internal_layout">
+				<t t-foreach="docs" t-as="o">
+					<div class="header">
+						<h3 class="text-center" style="font-weight:bold;">
+							<span t-field="o.responsable_user_id.company_id.partner_id.name"/>
+						</h3>
+						<h3 class="text-center"><strong>Comprobante movimiento de productos</strong></h3>
+  						<h4 class="text-left"><strong><span t-field="o.name"/></strong></h4>
+						<table style="width:100%;">
+							<tr>
+								<td style="width:25%;">
+									<strong>Fecha:	</strong><span t-field="o.registration_date"/>
+								</td>
+								<td style="width:25%;">
+									<strong>Responsable:	</strong><span t-field="o.responsable_user_id"/>
+								</td>
+								<td style="width:25%;">
+									<strong>Tipo producto:	</strong><span t-field="o.type_product_id.name"/>
+								</td>
+							 </tr>
+							 <tr>
+								<td style="width:25%;">
+									<strong>Almacén origen:	</strong><span t-field="o.warehouse_from_id.name"/><br/>
+								</td>
+								<td style="width:25%;">
+									<strong>Almacén destino:	</strong><span t-field="o.warehouse_to_id.name"/><br/>
+								</td>
+								<td style="width:25%;">
+									<strong>Total fundas:	</strong><span t-field="o.total_qty"/><br/>
+								</td>
+								<td style="width:25%;">
+									<strong>Total libras:	</strong><span t-field="o.total_pounds"/><br/>
+								</td>
+							</tr>
+						</table>
+					</div>	
+
+					<div class="page">
+						<div class="row"> 
+							<t t-set="total" t-value="0"/>
+							<t t-set="totalP" t-value="0"/>
+							<table class="table table-condensed" style="font-size:12px;border:1px solid black;">
+								<thead style="background:gray;color:#FFFFFF;">
+									<tr style="font-size:12px;">
+										<th class="text-center" style="width:5%;border:1px solid black;">#</th>
+										<th class="text-center" style="width:10%;border:1px solid black;">CÓDIGO</th>
+										<th class="text-center" style="width:55%;border:1px solid black;">PRODUCTO</th>
+										<th class="text-center" style="width:15%;border:1px solid black;">CANTIDAD</th>
+										<th class="text-center" style="width:15%;border:1px solid black;">LIBRAS</th>
+									</tr>
+								</thead>
+								<tbody class="invoice_tbody" style="font-size:12px;">
+									<tr t-foreach="o.doff_product_movements_detail_ids" t-as="l">
+										<td class="text-center" style="border:1px solid black;">
+											<span t-esc="l_index + 1" />
+										</td>
+										<td class="text-center" style="border:1px solid black;">
+											<span t-field="l.product_id.default_code"/>
+										</td>
+										<td class="text-center" style="border:1px solid black;">
+											<span t-field="l.product_id.name"/>
+										</td>
+										<td class="text-center" style="border:1px solid black;">
+											<span t-field="l.qty_product"/>
+										</td>
+										<td class="text-center" style="border:1px solid black;">
+											<span t-field="l.weight_pounds"/>
+										</td>
+										<t t-set="total" t-value="total + l.qty_product"/>
+										<t t-set="totalP" t-value="totalP + l.weight_pounds"/>
+									</tr>
+								 </tbody>
+							</table>
+
+							<table class="table table-condensed">
+								<tbody class="invoice_tbody" style="font-size:12px;">
+									<tr >
+										<td  style="width:65%;">
+											 <strong>Total</strong>
+										</td>
+										<td  style="width:5%;">
+										</td>
+										<td class="text-center"  style="width:15%;">
+											 <strong><t t-esc="'{:20,.2f}'.format(total)"/></strong>
+										</td>
+										<td class="text-center"  style="width:15%;">
+									 		<strong><t t-esc="'{:20,.2f}'.format(totalP)"/></strong>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="footer">
+						<table style="width:100%;">
+      						<tr>
+          						<td class="text-center" style="width:50%;"><strong>Entregado por:__________________________________</strong>
+          							<br/><br/><br/>
+          						</td>
+          						<td class="text-center" style="width:50%;"><strong>Recibido por:__________________________________</strong> 
+          							<br/><br/><br/>
+          						</td> 
+          					</tr>
+    					</table>
+    					<ul class="list-inline text-center">
+      						<li>Página:</li>
+      						<li><span class="page"/></li>
+      						<li>/</li>
+      						<li><span class="topage"/></li>
+    					</ul>
+					</div>		 
+				</t>
+			</t>
+		</template>
+	</data>	
+</odoo>

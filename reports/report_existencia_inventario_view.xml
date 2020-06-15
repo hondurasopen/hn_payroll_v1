@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<data>
+<template id="report_existencia_inventario_view">
+<t t-call="web.internal_layout">			
+<t t-foreach="docs" t-as="o">
+    <div class="header">
+      <h2 class="text-center" style="font-weight:bold;">
+        <span t-field="user.company_id.name"/>
+      </h2>
+      <h4 class="text-center"><strong>EXISTENCIAS DE INVENTARIO</strong></h4>
+    </div>   
+
+    <div class="footer">
+      <div class="col-xs-12">
+          <div style="border-bottom: 1px solid black;"></div>
+      </div>
+      <div class="row text-center">
+        <ul class="list-inline">
+            <li>Página:</li>
+            <li><span class="page"/></li>
+            <li>/</li>
+            <li><span class="topage"/></li>
+        </ul>
+      </div>
+    </div>
+
+					
+<div class="page">
+<div class="oe_structure"/>
+
+ <div class="row">
+    <table style="width:100%;">
+  	<tr >
+        <td style="width:25%;"><strong>Almacén: </strong><span t-field="o.warehouse_id.name"/>
+        </td>
+        <td class="text-left" style="width:25%;">
+        </td>
+        <td style="width:25%;"><strong>Fecha: </strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>  
+        </td>
+    		<td class="text-left" style="width:25%;">
+    	 		
+    		</td>
+		</tr>
+		<tr >
+        <td style="width:25%;"><strong>Total Fundas: </strong><span t-field="o.total_fundas"/>
+        </td>
+        <td class="text-left" style="width:25%;">
+        </td>
+        <td style="width:25%;">
+        </td>
+        <td class="text-left" style="width:25%;">
+        </td>
+		</tr>
+    <tr >
+        <td style="width:25%;"><strong>Total Capas: </strong><span t-field="o.total_capas"/>
+        </td>
+        <td class="text-left" style="width:25%;">
+        </td>
+        <td style="width:25%;">
+        </td>
+        <td class="text-left" style="width:25%;">
+        </td>
+    </tr>
+    <tr >
+        <td style="width:25%;"><strong>Total Bandas: </strong><span t-field="o.total_bandas"/>
+        </td>
+        <td class="text-left" style="width:25%;">
+        </td>
+        <td style="width:25%;">
+        </td>
+        <td class="text-left" style="width:25%;">
+        </td>
+    </tr>
+    </table>
+	
+<hr/>
+
+<table class="table table-condensed" style="width:100%;font-size:12px;">
+  <thead style="background:gray;color:#FFFFFF;">
+      <tr style="font-size:12px;">
+      <th class="text-left" style="width:20%;"><strong>Código</strong></th>
+      <th class="text-left" style="width:40%;"><strong>Descripción</strong></th>
+      <th class="text-center" style="width:20%;"><strong>Total Unidades</strong></th>
+      <th class="text-center" style="width:20%;"><strong>Unidad de medida</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+       <tr t-foreach="o.product_ids" t-as="line">
+          <td class="text-left" style="width:20%;">
+              <span t-field="line.code" />
+          </td>
+          <td class="text-left" style="width:40%;">
+            <span t-field="line.name" />
+          </td>
+          <td class="text-center" style="width:20%;">
+            <span t-field="line.qty" />
+          </td>
+          <td class="text-center" style="width:20%;">
+            <span t-field="line.unidad_medida_id" />
+          </td>
+       </tr>
+  </tbody>
+</table>
+
+</div>
+
+						
+</div>
+					
+				</t>
+			</t>
+	
+
+		</template>
+	</data>
+</odoo>

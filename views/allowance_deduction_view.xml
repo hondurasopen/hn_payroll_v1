@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<record id="hr_contract_deduction_allowance_form_view" model="ir.ui.view">
+<field name="name">hr_contract_deduction_allowance_form_view</field>
+<field name="model">hr.contract.deduction.allowance</field>
+<field name="arch"  type="xml">
+	<form string="Benificio y deducciones">
+	<header>                 
+        <field name="state" widget="statusbar" nolabel="1"/>
+	</header>
+	<sheet>
+		<group>
+			<group>
+				<field name="name"/>
+				<field name="periodicity"/>
+				<field name="amount_fee"/>
+				<field name="number_fee" attrs="{'invisible': [('periodicity','=', 'infinita')]}"/>
+				<field name="amount_total" attrs="{'invisible': [('periodicity','=', 'infinita')]}"/>
+				<field name="number_fee_pending" attrs="{'invisible': [('periodicity','=', 'infinita')]}"/>
+			</group>
+			<group>
+				<field name="concept_type"/>
+				<field name="start_date"/>
+				<field name="end_date" attrs="{'invisible': [('periodicity','=', 'infinita')]}"/>
+			</group>
+		</group>
+	</sheet>
+	</form>
+</field>
+</record>  
+
+
+<record model="ir.ui.view" id="hr_contract_deduction_allowance_view_tree">
+<field name="name">hr.contract.deduction.allowance.view.tree</field>
+<field name="model">hr.contract.deduction.allowance</field>
+<field name="arch" type="xml">
+	<tree string="Benificio y deducciones">
+		<field name="concept_type" attrs= "{'invisible': [('state', '=', 'done')]}"/>
+    	<field name="name" attrs= "{'invisible': [('state', '=', 'done')]}"/>
+		<field name="amount_total" attrs= "{'invisible': [('state', '=', 'done')]}"/>
+		<field name="amount_fee" attrs= "{'invisible': [('state', '=', 'done')]}"/>
+		<field name="number_fee" attrs= "{'invisible': [('state', '=', 'done')]}"/>
+		<field name="number_fee_pending" attrs= "{'invisible': [('state', '=', 'done')]}"/>
+		<field name="start_date" attrs= "{'invisible': [('state', '=', 'done')]}"/>
+		<field name="end_date" attrs= "{'invisible': [('state', '=', 'done')]}"/>
+		<field name="state"  attrs= "{'invisible': [('state', '=', 'done')]}"/>
+	</tree>
+</field>
+</record>
+
+</odoo>

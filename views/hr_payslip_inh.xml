@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<record id="hn_payroll_payslip_run_form_inherit" model="ir.ui.view">
+<field name="name">hn.hr.payslip.run.form.inherit</field>
+<field name="model">hr.payslip.run</field>
+<field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+<field name="arch"  type="xml">
+		<button name="close_payslip_run" position="after">
+			<button name="%(action_payroll_hn_structure_contract_wizard)d" type="action" states="draft" string="Establecer Estructura" class="oe_highlight"/>
+		</button>
+       	<field name="credit_note" position="after">
+           <field name="structure_id" attrs="{'readonly': [('state', '=', 'done')]}" required="1"/>
+       	</field> 
+    </field>
+</record>   
+</odoo>

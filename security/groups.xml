@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<odoo>
+	<data>
+		<record model="ir.module.category" id="rrhh_mgm_aplicativos_category">
+  			<field name="name">Permisos RRHH Tools</field> 
+  			<field name="description">Modulo RRHH Tools</field> 
+  			<field name="sequence">4</field> 
+  		</record>
+
+  		<record id="grupo_rrhh_mgm_capacitacion_manager" model="res.groups">
+  			<field name="category_id" ref="rrhh_mgm_aplicativos_category" /> 
+  			<field name="name">Permisos Manager Capacitaciones</field> 
+  		</record>
+
+  		<record id="grupo_rrhh_mgm_capacitacion_user" model="res.groups">
+  			<field name="category_id" ref="rrhh_mgm_aplicativos_category" /> 
+  			<field name="name">Permisos Restringido Capacitaciones</field> 
+  		</record>
+
+  	</data>
+</odoo>
