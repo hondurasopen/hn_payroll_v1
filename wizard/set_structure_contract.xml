@@ -46,7 +46,7 @@
     <field name="target">new</field>
     </record>
 
-  <menuitem string="Estructuras por departamento" id="menu_set_structure_department" parent="hr_payroll.menu_hr_root_payrol" action="action_payroll_structure_contract_wizard" sequence="10"/>
+  <menuitem string="Estructuras por departamento" id="menu_set_structure_department" parent="hr.menu_hr_configuration" action="action_payroll_structure_contract_wizard" sequence="10"/>
 
 </data>
 </openerp>
