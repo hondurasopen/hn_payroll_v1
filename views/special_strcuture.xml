@@ -31,7 +31,7 @@
             <notebook>
             <page string="Conceptos">
             	<field name="concept_ids">
-            		<tree>
+            		<tree editable="top">
  						<field name="name" />
  						<field name="concept_type" />
  						<field name="account_id" />

@@ -7,4 +7,4 @@ class HrSpecialStructure(models.Model):
 
 	name = fields.Char("Nombre")
 	active = fields.Boolean("Activo", default=True)
-	concept_ids = fields.One2many("hr.contract.concepts.deductions", "", "Detalle de conceptos") 
+	concept_ids = fields.One2many("hr.contract.concepts.deductions", "structure_id", "Detalle de conceptos") 
