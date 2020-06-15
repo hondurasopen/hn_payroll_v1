@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, _
-from datetime import datetime
-from datetime import *
-import time
-from datetime import datetime, timedelta
-from odoo.exceptions import Warning
+from openerp import models, fields, api 
 
 
 class PlanificacionMasterDetail(models.Model):

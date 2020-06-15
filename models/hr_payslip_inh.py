@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import api, models, fields
-from datetime import *
+from openerp import models, fields, api 
 
 class HrPayslipRunInh(models.Model):
     _inherit = 'hr.payslip.run'
