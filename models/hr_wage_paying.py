@@ -51,7 +51,7 @@ class HrPrePayroll(models.Model):
     saving_fee = fields.Float("Aporte Cooperativa")
     amount_isr = fields.Float("ISR")
     amount_ipv = fields.Float("Impuesto Vecinal")
-    other_deduction = fields.Float("Otra deducción")
+    other_deductions = fields.Float("Otra deducción")
     other_incomes = fields.Float("Otros ingresos")
     gross_wage = fields.Float("Salario bruto", compute='_compute_amount')
     amount_deduction = fields.Float("Total de deducciones", compute='_compute_amount')

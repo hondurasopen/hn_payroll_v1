@@ -44,15 +44,17 @@
                     <field name="saving_fee"/>
                     <field name="amount_isr"/>
                     <field name="amount_ipv"/>
-                    <field name="other_deduction"/>
-                    <field name="gross_wage" sum="Total" readonly="0"/>
-                    <field name="amount_deduction" sum="Total" readonly="0"/>
-                    <field name="amount_net" sum="Total" readonly="0"/>
+                    <field name="other_deductions"/>
+                    <field name="gross_wage" sum="Total" />
+                    <field name="amount_deduction" sum="Total" />
+                    <field name="amount_net" sum="Total"/>
                 </tree>
             </field>
         </page>
+        <page string="Observaciones">
+             <field name="name" placeholder="Nómina primera quincena"/>
+        </page>
     </notebook>
-    <field name="name" placeholder="Nómina primera quincena"/>
  </sheet>
 </form>
 </field>
