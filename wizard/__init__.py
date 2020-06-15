@@ -1,2 +1,2 @@
-from . import increased_salary
-from . import set_structure_contract
+import increased_salary
+import set_structure_contract
