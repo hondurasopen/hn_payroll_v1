@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<odoo>
+<openerp>
+<data>
 
 <record id="hr_historial_contract_view_tree" model="ir.ui.view">
 <field name="name">hr.historial.contract.tree.view</field>
@@ -45,4 +46,6 @@
     </notebook>  
     </field>
 </record>   
-</odoo>
+
+</data>
+</openerp>

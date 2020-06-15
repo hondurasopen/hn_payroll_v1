@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<openerp>
+<data>
 
     <record id="hr_contract_concepts_deductions_tree_view" model="ir.ui.view">
     <field name="name">hr.contract.concepts.deductions.tree.view</field>
@@ -47,4 +48,5 @@
 
   <menuitem string="Beneficios y deducciones" id="menu_beneficios_deducciones" parent="hr_payroll.menu_hr_payroll_configuration" action="action_hr_contract_concepts_deductions" sequence="160"/>
 
-</odoo>
+</data>
+</openerp>

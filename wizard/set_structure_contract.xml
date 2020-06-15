@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
+<data>
 
     <record id="hn_structure_contract_wizard_tree_view" model="ir.ui.view">
     <field name="name">payroll.hn.structure.contract.wizard.tree.view</field>
@@ -47,4 +48,5 @@
 
   <menuitem string="Estructuras por departamento" id="menu_set_structure_department" parent="hr_payroll.menu_hr_payroll_configuration" action="action_payroll_hn_structure_contract_wizard" sequence="10"/>
 
+</data>
 </openerp>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
+<data>
 
 <record id="hr_contract_deduction_allowance_form_view" model="ir.ui.view">
 <field name="name">hr_contract_deduction_allowance_form_view</field>
@@ -49,4 +50,5 @@
 </field>
 </record>
 
+</data>
 </openerp>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<openerp>
+<data>
 
     <record id="payroll_hn_increased_salary_wizard_tree_view" model="ir.ui.view">
     <field name="name">payroll.hn.increased.salary.wizard.tree.view</field>
@@ -64,4 +65,5 @@
     <menuitem string="Incrementos salariales" name="Incrementos salariales" id="wizard_increased_salary_menu_root" parent="hr.menu_hr_root" sequence="13"/>
   <menuitem string="Incrementos salariales" id="wizard_increased_salary_menu" parent="wizard_increased_salary_menu_root" action="action_payroll_hn_increased_salary_wizard" sequence="10"/>
 
-</odoo>
+</data>
+</openerp>
