@@ -12,33 +12,7 @@
     </field>
     </record>
 
-    <!-- Import Inventory Wizard form -->
-    <record id="hr_hn_wage_paying_form_view" model="ir.ui.view">
-        <field name="name">hr.wage.paying.form.view</field>
-        <field name="model">hr.wage.paying</field>
-        <field name="arch" type="xml">
-            <form string="Preparación de nomina">
-            <sheet> 
-            <group>
-                    <group>
-                        <field name="start_date" />
-                    </group>
-                    <group>
-                        <field name="end_date" />
-                    </group>
-            </group>
-            <page sring="Detalle de nómina">
-                <field name="employee_detail_ids">
-                    <tree>
-                        <field name="employee_id" />
-                        <field name="wage" />
-                    </tree>
-                </field>
-            </page>
-            </sheet>
-           </form>
-        </field>
-    </record>
+   
 
     <!--  Action of Import inventory wizard -->
     <record model="ir.actions.act_window" id="action_hr_wage_paying">
