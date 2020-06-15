@@ -18,6 +18,7 @@
 <field name="arch"  type="xml">
 <form string="Salario y deducciones">
 <header>
+     <button name="get_employee" type="object" string="Obtener Empleados" states="draft" class="oe_highlight" />
     <field name="state" widget="statusbar" nolabel="1"/>
 </header>
 <sheet> 
