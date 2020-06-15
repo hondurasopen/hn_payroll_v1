@@ -37,7 +37,7 @@
     </record>
 
     <!--  Action of Import inventory wizard -->
-    <record model="ir.actions.act_window" id="action_payroll_hn_structure_contract_wizard">
+    <record model="ir.actions.act_window" id="action_hn_structure_contract_wizard">
     <field name="name">Estructuras por departamento</field>
     <field name="res_model">payroll.hn.structure.contract.wizard</field>
     <field name="view_type">form</field>
@@ -46,7 +46,7 @@
     <field name="target">new</field>
     </record>
 
-  <menuitem string="Estructuras por departamento" id="menu_set_structure_department" parent="hr_payroll.menu_hr_root_payrol" action="action_payroll_hn_structure_contract_wizard" sequence="10"/>
+  <menuitem string="Estructuras por departamento" id="menu_set_structure_department" parent="hr_payroll.menu_hr_root_payrol" action="action_payroll_structure_contract_wizard" sequence="10"/>
 
 </data>
 </openerp>
