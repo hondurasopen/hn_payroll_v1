@@ -41,10 +41,7 @@
     <field name="name">Nómina de empleados</field>
     <field name="res_model">hr.wage.paying</field>
     <field name="view_type">form</field>
-    <field name="view_mode">tree,form</field>
-    <field name="help" type="html">
-        <p class="oe_view_nocontent_create">Crear primer registro</p>
-    </field>
+    <field name="view_model">form,tree</field>
     </record>
 
   <menuitem string="Nómina de empleados" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="10"/>
