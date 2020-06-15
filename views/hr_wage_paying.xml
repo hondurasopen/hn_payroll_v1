@@ -8,6 +8,7 @@
         <tree string="Preparación de nomina">
             <field name="start_date"/>
             <field name="end_date"/>
+            <field name="state"/>
         </tree>
     </field>
     </record>
@@ -38,15 +39,15 @@
                 <tree editable="top">
                     <field name="employee_id"/>
                     <field name="wage"/>
-                    <field name="another_incomes"/>
+                    <field name="other_incomes"/>
                     <field name="loan_fee"/>
                     <field name="saving_fee"/>
                     <field name="amount_isr"/>
                     <field name="amount_ipv"/>
-                    <field name="another_deduction"/>
-                    <field name="gross_wage"/>
-                    <field name="amount_deduction"/>
-                    <field name="amount_net" sum="Total"/>
+                    <field name="other_deduction"/>
+                    <field name="gross_wage" sum="Total" readonly="0"/>
+                    <field name="amount_deduction" sum="Total" readonly="0"/>
+                    <field name="amount_net" sum="Total" readonly="0"/>
                 </tree>
             </field>
         </page>
