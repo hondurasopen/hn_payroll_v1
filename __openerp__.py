@@ -15,6 +15,7 @@
         "wizard/increased_salary_view.xml",
         "views/doff_add_contract.xml",
         "views/allowance_deduction_view.xml",
+        "views/hr_wage_paying.xml",
     ],
     'update_xml': [
     ],

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <record id="hr_wage_paying_tree_view" model="ir.ui.view">
+    <field name="name">hr.wage.paying.tree.view</field>
+    <field name="model">hr.wage.paying</field>
+    <field name="arch" type="xml">
+        <tree string="Preparación de nomina">
+            <field name="start_date"/>
+            <field name="end_date"/>
+        </tree>
+    </field>
+    </record>
+
+    <!-- Import Inventory Wizard form -->
+    <record id="hr_wage_paying_form_view" model="ir.ui.view">
+        <field name="name">hr.wage.paying.form.view</field>
+        <field name="model">hr.wage.paying</field>
+        <field name="arch" type="xml">
+            <form string="Preparación de nomina">
+            <sheet> 
+            <group>
+                    <group>
+                        <field name="start_date" />
+                    </group>
+                    <group>
+                        <field name="end_date" />
+                    </group>
+            </group>
+            <page sring="Detalle de nómina">
+                <field name="employee_detail_ids">
+                    <tree>
+                        <field name="employee_id" />
+                        <field name="wage" />
+                    </tree>
+                </field>
+            </page>
+            </sheet>
+           </form>
+        </field>
+    </record>
+
+    <!--  Action of Import inventory wizard -->
+    <record model="ir.actions.act_window" id="action_hr_wage_paying">
+    <field name="name">Nómina de empleados</field>
+    <field name="res_model">hr.wage.paying</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Crear primer registro</p>
+    </field>
+    </record>
+
+  <menuitem string="Nómina de empleados" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="160"/>
+
+</data>
+</openerp>
