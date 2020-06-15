@@ -32,3 +32,6 @@ class PlanificacionMasterDetail(models.Model):
 	name = fields.Char("Nombre de concepto")
 	code = fields.Char("Código de concepto")
 	active = fields.Boolean("Activo", default=True)
+	structure_id = fields.Many2one("hr.special.structure", "Estructura")
+	account_id = fields.Many2one("account.account", "Cuenta")
+	concept_type = fields.Selection([('beneficio','Beneficio'),('deduccion','Deduccion')], "Tipo", default='deduccion')

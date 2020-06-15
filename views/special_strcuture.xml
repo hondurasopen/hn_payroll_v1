@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+
+<record id="hr_special_structure_tree_view" model="ir.ui.view">
+    <field name="name">hr.special.structure.tree.view</field>
+    <field name="model">hr.special.structure</field>
+    <field name="arch" type="xml">
+        <tree string="Concepto beneficios">
+            <field name="name"/>
+            <field name="active"/>
+        </tree>
+    </field>
+    </record>
+
+    <!-- Import Inventory Wizard form -->
+    <record id="hr_special_structure_form_view" model="ir.ui.view">
+        <field name="name">hr.special.structure.form.view</field>
+        <field name="model">hr.special.structure</field>
+        <field name="arch" type="xml">
+            <form string="Conceptos beneficios y deducciones">
+            <sheet> 
+            <group>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="active" />
+                    </group>
+            </group>
+            <notebook>
+            <page string="Conceptos">
+            	<field name="concept_ids">
+            		<tree>
+ 						<field name="name" />
+ 						<field name="concept_type" />
+ 						<field name="account_id" />
+            		</tree>
+            	</field>
+            </page>
+            </notebook>
+            </sheet>
+           </form>
+        </field>
+    </record>
+
+    <!--  Action of Import inventory wizard -->
+    <record model="ir.actions.act_window" id="action_hr_special_structure">
+    <field name="name">Estructura Salarial</field>
+    <field name="res_model">hr.special.structure</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">Crear primer registro</p>
+    </field>
+    </record>
+
+  <menuitem string="Estructura Salarial" id="menu_salarial_strcuture" parent="hr.menu_hr_configuration" action="action_hr_special_structure" sequence="10"/>
+
+
+
+</data>
+</openerp>
