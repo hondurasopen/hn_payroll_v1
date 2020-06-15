@@ -13,7 +13,7 @@
     </record>
 
     <!-- Import Inventory Wizard form -->
-    <record id="hr_wage_paying_form_view" model="ir.ui.view">
+    <record id="hr_hn_wage_paying_form_view" model="ir.ui.view">
         <field name="name">hr.wage.paying.form.view</field>
         <field name="model">hr.wage.paying</field>
         <field name="arch" type="xml">
