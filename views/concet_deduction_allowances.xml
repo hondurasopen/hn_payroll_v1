@@ -46,7 +46,7 @@
     </field>
     </record>
 
-  <menuitem string="Beneficios y deducciones" id="menu_beneficios_deducciones" parent="hr_payroll.menu_hr_payroll_configuration" action="action_hr_contract_concepts_deductions" sequence="160"/>
+  <menuitem string="Beneficios y deducciones" id="menu_beneficios_deducciones" parent="hr.menu_hr_configuration" action="action_hr_contract_concepts_deductions" sequence="160"/>
 
 </data>
 </openerp>
