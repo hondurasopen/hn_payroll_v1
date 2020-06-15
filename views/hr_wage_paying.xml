@@ -17,7 +17,7 @@
 <field name="model">hr.wage.paying</field>
 <field name="arch"  type="xml">
 <form string="Salario y deducciones">
-<sheet>
+<sheet> 
     <group>
         <group>
             <field name="start_date"/>
@@ -26,8 +26,12 @@
             <field name="end_date"/>
         </group>
     </group>
-
-</sheet>
+    <notebook>
+        <page string="Nómina de empleados">
+            <field name="employee_detail_ids"/>
+        </page>
+    </notebook>
+ </sheet>
 </form>
 </field>
 </record>   
@@ -43,7 +47,7 @@
     </field>
     </record>
 
-  <menuitem string="Nómina de empleados" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="160"/>
+  <menuitem string="Nómina de empleados" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="10"/>
 
 </data>
 </openerp>
