@@ -20,6 +20,7 @@
 <form string="Salario y deducciones">
 <header>
      <button name="get_employee" type="object" string="Obtener Empleados" states="draft" class="oe_highlight" />
+     <button name="set_amounts" type="object" string="Procesar Nómina" states="draft" class="oe_highlight" />
     <field name="state" widget="statusbar" nolabel="1"/>
 </header>
 <sheet> 
@@ -52,6 +53,19 @@
             </field>
         </page>
         <page string="Observaciones">
+        <group>
+        <group>
+                 <field name="net_total"/>
+        <field name="payroll_type"/>
+        </group>
+        <group>
+                 <field name="total_isr" />
+                 <field name="total_ipv" />
+                 <field name="total_saving_fee" />
+                 <field name="total_loan" />
+                 <field name="total_other_deducction" />
+        </group>
+        </group>
              <field name="name" placeholder="Nómina primera quincena"/>
         </page>
     </notebook>
