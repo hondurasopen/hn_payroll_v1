@@ -21,6 +21,7 @@ class HrPrePayroll(models.Model):
         	line_obj = self.env["hr.wage.paying.line"]
         	vals = {
         		'employee_id': l.id,
+        		'parent_id': self.id,
         	}
         	contract_obj = self.env["hr.contract"].search([('employee_id', '=', l.id)], limit=1)
         	if self.payroll_type == 'bi-weekly':
