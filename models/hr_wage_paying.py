@@ -16,4 +16,12 @@ class HrPrePayroll(models.Model):
     parent_id = fields.Many2one("hr.wage.paying", "Pago")
     employee_id = fields.Many2one("hr.employee", "empleado")
     wage = fields.Float("Salario")
-
+    gross_wage = fields.Flaot("Salario bruto")
+    loan_fee = fields.Float("Cuota de préstamo")
+    saving_fee = fields.Float("Aporte Cooperativa")
+    amount_isr = fields.Float("ISR")
+    amount_ipv = fields.Float("Impuesto Vecinal")
+    another_deduction = fields.Float("Otra deducción")
+    another_incomes = fields.Float("Otros ingresos")
+    amount_deduction = fields.Float("Total de deducciones")
+    amount_net = fields.Float("Neto a pagar")
