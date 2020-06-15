@@ -46,7 +46,7 @@ class HrPrePayroll(models.Model):
                 'credit': self.net_total,
                 'amount_currency': 0.0,
                 'name': 'Sueldos y Salarios',
-                'account_id': self.journal_id.default_credit_account_id.id,
+                'account_id': self.journal_id.default_debit_account_id.id,
                 'date': self.end_date,
             }
             vals_credit = {
@@ -54,7 +54,7 @@ class HrPrePayroll(models.Model):
                 'credit': 0.0,
                 'amount_currency': 0.0,
                 'name': 'Sueldos y Salarios',
-                'account_id': self.journal_id.property_account_payable.id,
+                'account_id': self.journal_id.default_credit_account_id.id,
                 'date': self.end_date,
             }
             lineas.append((0, 0, vals_debit))
