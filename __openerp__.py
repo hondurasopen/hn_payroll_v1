@@ -7,7 +7,7 @@
         Honduras Payroll  Version Especial
     """,          
     'version': '1.0',
-    'depends': ['base', 'hr', "hr_contract"],
+    'depends': ['base', 'hr', "hr_payroll", "hr_contract"],
     'data': [
         "wizard/set_structure_contract.xml",
     	"views/hr_payslip_inh.xml",
