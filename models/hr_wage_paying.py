@@ -22,7 +22,7 @@ class HrPrePayroll(models.Model):
         	vals = {
         		'employee_id': l.id,
         	}
-        	contract_obj = self.env["hr.contract"].search([('employee_id', '', l.id)], limit=1)
+        	contract_obj = self.env["hr.contract"].search([('employee_id', '=', l.id)], limit=1)
         	if self.payroll_type == 'bi-weekly':
         		vals["wage"] = contract_obj.wage / 2
         	if self.payroll_type == 'monthly':
