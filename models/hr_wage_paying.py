@@ -61,7 +61,7 @@ class HrPrePayroll(models.Model):
                 'date': self.end_date,
             }
             vals_credit = {
-                'debit': self.net_total,
+                'debit': self.gross_total,
                 'credit': 0.0,
                 'amount_currency': 0.0,
                 'name': 'Sueldos y Salarios',

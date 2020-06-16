@@ -24,10 +24,11 @@
             <group>
                     <group>
                         <field name="name" />
-                        <field name="account_id"/>
+                        <field name="concept"/>
                     </group>
                     <group>
                         <field name="code" />
+                        <field name="account_id"/>
                         <field name="active" />
                     </group>
             </group>
