@@ -15,23 +15,23 @@
     </record>
 
     <!-- Import Inventory Wizard form -->
-    <record id="payroll_hn_increased_salary_wizard_form_view" model="ir.ui.view">
-        <field name="name">payroll.hn.increased.salary.wizard.form.view</field>
+    <record id="hr_contract_concepts_deductions_form_view" model="ir.ui.view">
+        <field name="name">hr.contract.concepts.deductions.form.view</field>
         <field name="model">hr.contract.concepts.deductions</field>
         <field name="arch" type="xml">
             <form string="Conceptos beneficios y deducciones">
             <sheet> 
-            <group>
-                    <group>
-                        <field name="name" />
-                        <field name="concept"/>
-                    </group>
-                    <group>
-                        <field name="code" />
-                        <field name="account_id"/>
-                        <field name="active" />
-                    </group>
-            </group>
+                <group>
+                        <group>
+                            <field name="name" />
+                            <field name="concept"/>
+                        </group>
+                        <group>
+                            <field name="code" />
+                            <field name="account_id"/>
+                            <field name="active" />
+                        </group>
+                </group>
             </sheet>
            </form>
         </field>
