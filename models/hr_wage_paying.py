@@ -48,7 +48,13 @@ class HrPrePayroll(models.Model):
                 self.total_saving_fee += l.saving_fee
                 self.total_other_deducction += l.other_deductions
             self.write({'state': 'validated'})
-
+            for concept in self.structure_id.concept_ids:
+                concept_obj = self.env["hr.wage.paying.concept"]
+                vals = {
+                    'parent_id': self.id,
+                    'concept_id': concept.id. 
+                }
+                concept_obj.create(vals)
 
 
     @api.multi
