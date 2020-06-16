@@ -59,9 +59,6 @@ class HrPrePayroll(models.Model):
                     'parent_id': self.id,
                     'concept_id': concept.id,
                 }
-                print("*" * 200)
-                print(concept.concept)
-                print("*" * 200)
                 if concept.concept == 'gross':
                     vals["amount"] = 100 ##sself.gross_total
                 if concept.concept == 'net':
@@ -140,7 +137,11 @@ class HrPrePayroll(models.Model):
 
             line_obj.create(vals)
 
-
+    @api.multi
+    def unlink(self):
+        if (self.state == 'validado' or self.state == 'done'):
+            raise Warning(('No puede borrar este registro se encuentra en estado validado'))
+        return super(HrPrePayroll, self).unlink()
 
 class HrPrePayrollLine(models.Model):
     _name = 'hr.wage.paying.line'
