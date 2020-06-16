@@ -12,17 +12,18 @@ class HrPrePayroll(models.Model):
     state = fields.Selection( [('draft', 'Borrador'), ('validated', 'Validada'),  ('done', 'Hecho')], string="Estado", default='draft')
     payroll_type = fields.Selection( [('bi-weekly', 'Quincenal'), ('monthly', 'Mensual')], string="Tipo", default='bi-weekly')
     employee_detail_ids = fields.One2many("hr.wage.paying.line", "parent_id", "Detalle de empleados")
+    concept_ids = fields.One2many("hr.wage.paying.concepts", "parent_id", "Conceptos")
     journal_id = fields.Many2one("account.journal", "Diarios")
     move_id = fields.Many2one("account.move", "Asiento", readonly=True)
     structure_id = fields.Many2one("hr.special.structure", "Estructura")
 
-    gross_total = fields.Float("Salario Bruto")
-    net_total = fields.Float("Neto salarios")
-    total_isr = fields.Float("Total ISR")
-    total_ipv = fields.Float("Total IPV")
-    total_saving_fee = fields.Float("Total aportes cooperativa")
-    total_loan = fields.Float("Total préstamos")
-    total_other_deducction = fields.Float("Total otras deducciones")
+    gross_total = fields.Float("Salario Bruto", readonly=True)
+    net_total = fields.Float("Neto salarios", readonly=True)
+    total_isr = fields.Float("Total ISR", readonly=True)
+    total_ipv = fields.Float("Total IPV", readonly=True)
+    total_saving_fee = fields.Float("Total aportes cooperativa", readonly=True)
+    total_loan = fields.Float("Total préstamos", readonly=True)
+    total_other_deducction = fields.Float("Total otras deducciones", readonly=True)
 
 
     @api.multi
@@ -44,6 +45,8 @@ class HrPrePayroll(models.Model):
                 self.total_saving_fee += l.saving_fee
                 self.total_other_deducction += l.other_deductions
             self.write({'state': 'validated'})
+            for concepts in self.structure_id.concept_ids:
+
 
 
     @api.multi
@@ -106,14 +109,14 @@ class HrPrePayroll(models.Model):
 
 
 
-class HrPrePayroll(models.Model):
+class HrPrePayrollLine(models.Model):
     _name = 'hr.wage.paying.line'
 
     @api.one
     @api.depends("gross_wage", "loan_fee", "saving_fee", "amount_isr", "amount_ipv", "other_incomes", "other_deductions")
     def _compute_amount(self):
     	self.gross_wage = self.wage + self.other_incomes 
-    	self.amount_deduction = self.loan_fee + self.saving_fee + self.amount_isr + self.amount_ipv + self.other_deductions
+    	self.amount_deduction = self.loan_fee + self.saving_fee + self.amount_isr + self.amount_ipv + self.other_deductions + self.amount_ihss
     	self.amount_net = self.gross_wage - self.amount_deduction
 
     parent_id = fields.Many2one("hr.wage.paying", "Pago")
@@ -132,3 +135,9 @@ class HrPrePayroll(models.Model):
 
     
 
+class HrConcepts(models.Model):
+    _name = 'hr.wage.paying.concepts'
+
+    parent_id = fields.Many2one("hr.wage.paying", "Planilla")
+    name = fields.Many2one("hr.contract.concepts.deductions", "Concepto")
+    amount = fields.Float("Total")
