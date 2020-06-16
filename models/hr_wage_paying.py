@@ -5,16 +5,18 @@ from openerp.exceptions import except_orm, Warning, RedirectWarning
 class HrPrePayroll(models.Model):
     _name = 'hr.wage.paying'
 
+
+    name = fields.Text("Descripción")
     start_date = fields.Date("Fecha inicial")
     end_date = fields.Date("Fecha final")
-    name = fields.Text("Descripción")
     state = fields.Selection( [('draft', 'Borrador'), ('validated', 'Validada'),  ('done', 'Hecho')], string="Estado", default='draft')
     payroll_type = fields.Selection( [('bi-weekly', 'Quincenal'), ('monthly', 'Mensual')], string="Tipo", default='bi-weekly')
     employee_detail_ids = fields.One2many("hr.wage.paying.line", "parent_id", "Detalle de empleados")
     journal_id = fields.Many2one("account.journal", "Diarios")
-    move_id = fields.Many2one("account.move", "Asiento")
+    move_id = fields.Many2one("account.move", "Asiento", readonly=True)
+    structure_id = fields.Many2one("hr.special.structure", "Estructura")
 
-
+    gross_total = fields.Float("Salario Bruto")
     net_total = fields.Float("Neto salarios")
     total_isr = fields.Float("Total ISR")
     total_ipv = fields.Float("Total IPV")
@@ -22,10 +24,19 @@ class HrPrePayroll(models.Model):
     total_loan = fields.Float("Total préstamos")
     total_other_deducction = fields.Float("Total otras deducciones")
 
+
     @api.multi
     def set_amounts(self):
         if self.employee_detail_ids:
+            self.gross_total = 0
+            self.net_total = 0
+            self.total_loan = 0
+            self.total_isr = 0
+            self.total_ipv = 0
+            self.total_saving_fee = 0
+            self.total_other_deducction += l.other_deductions
             for l in self.employee_detail_ids:
+                self.gross_total += l.gross_wage
                 self.net_total += l.amount_net
                 self.total_loan += l.loan_fee
                 self.total_isr += l.amount_isr
@@ -108,6 +119,7 @@ class HrPrePayroll(models.Model):
     parent_id = fields.Many2one("hr.wage.paying", "Pago")
     employee_id = fields.Many2one("hr.employee", "Empleado")
     wage = fields.Float("Salario")
+    amount_ihss = fields.Float("IHSS")
     loan_fee = fields.Float("Cuota de préstamo")
     saving_fee = fields.Float("Aporte Cooperativa")
     amount_isr = fields.Float("ISR")
