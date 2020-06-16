@@ -9,6 +9,8 @@
         <tree string="Concepto beneficios">
             <field name="name"/>
             <field name="code"/>
+            <field name="concept"/>
+            <field name="account_id"/>
             <field name="active"/>
         </tree>
     </field>
