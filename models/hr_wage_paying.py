@@ -139,8 +139,9 @@ class HrPrePayroll(models.Model):
 
     @api.multi
     def unlink(self):
-        if (self.state == 'validado' or self.state == 'done'):
-            raise Warning(('No puede borrar este registro se encuentra en estado validado'))
+        for payroll in self:
+            if (payroll.state == 'validado' or payroll.state == 'done'):
+                raise Warning(('No puede borrar este registro se encuentra en estado validado'))
         return super(HrPrePayroll, self).unlink()
 
 class HrPrePayrollLine(models.Model):
