@@ -12,6 +12,8 @@ class HrPrePayroll(models.Model):
     state = fields.Selection( [('draft', 'Borrador'), ('validated', 'Validada'),  ('done', 'Hecho')], string="Estado", default='draft')
     payroll_type = fields.Selection( [('bi-weekly', 'Quincenal'), ('monthly', 'Mensual')], string="Tipo", default='bi-weekly')
     employee_detail_ids = fields.One2many("hr.wage.paying.line", "parent_id", "Detalle de empleados")
+    concept_ids = fields.One2many("hr.wage.paying.concept", "parent_id", "Conceptos")
+
     journal_id = fields.Many2one("account.journal", "Diarios")
     move_id = fields.Many2one("account.move", "Asiento", readonly=True)
     structure_id = fields.Many2one("hr.special.structure", "Estructura")
@@ -19,6 +21,7 @@ class HrPrePayroll(models.Model):
     gross_total = fields.Float("Salario Bruto", readonly=True)
     net_total = fields.Float("Neto salarios", readonly=True)
     total_isr = fields.Float("Total ISR", readonly=True)
+    total_ihss = fields.Float("Total IHSS", readonly=True)
     total_ipv = fields.Float("Total IPV", readonly=True)
     total_saving_fee = fields.Float("Total aportes cooperativa", readonly=True)
     total_loan = fields.Float("Total préstamos", readonly=True)
@@ -40,10 +43,12 @@ class HrPrePayroll(models.Model):
                 self.net_total += l.amount_net
                 self.total_loan += l.loan_fee
                 self.total_isr += l.amount_isr
+                self.total_ihss += l.amount_ihss
                 self.total_ipv += l.amount_ipv
                 self.total_saving_fee += l.saving_fee
                 self.total_other_deducction += l.other_deductions
             self.write({'state': 'validated'})
+
 
 
     @api.multi
@@ -130,4 +135,10 @@ class HrPrePayrollLine(models.Model):
     amount_deduction = fields.Float("Total de deducciones", compute='_compute_amount')
     amount_net = fields.Float("Neto a pagar", compute='_compute_amount')
 
-    
+
+class HrPreConcept(models.Model):
+    _name = 'hr.wage.paying.concept'
+
+    parent_id = fields.Many2one("hr.wage.paying", "Planilla")
+    concept_id = fields.Many2one("hr.contract.concepts.deductions", "Concepto")
+    amount = fields.Float("Total")

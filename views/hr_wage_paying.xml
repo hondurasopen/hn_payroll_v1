@@ -75,6 +75,14 @@
         </group>
              <field name="name" placeholder="Nómina primera quincena"/>
         </page>
+        <page string="Conceptos">
+            <field name="concept_ids">
+                <tree>
+                    <field name="concept_id" />
+                    <field name="amount" sum="Total"/>
+               </tree>
+            </field>
+        </page>
     </notebook>
 </form>
 </field>
