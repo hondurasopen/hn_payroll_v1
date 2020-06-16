@@ -49,7 +49,7 @@ class HrPrePayroll(models.Model):
             self.total_isr = 0
             self.total_ipv = 0
             self.total_saving_fee = 0
-            self.total_other_deducction += l.other_deductions
+            self.total_other_deducction = 0
             for l in self.employee_detail_ids:
                 self.gross_total += l.gross_wage
                 self.net_total += l.amount_net
