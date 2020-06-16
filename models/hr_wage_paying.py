@@ -29,6 +29,18 @@ class HrPrePayroll(models.Model):
 
 
     @api.multi
+    def back_to_draft(self):
+        self.gross_total = 0
+        self.net_total = 0
+        self.total_loan = 0
+        self.total_isr = 0
+        self.total_ipv = 0
+        self.total_saving_fee = 0
+        self.total_other_deducction 
+        self.concept_ids.unlink()
+        self.write({'state': 'draft'})
+
+    @api.multi
     def set_amounts(self):
         if self.employee_detail_ids:
             self.gross_total = 0
@@ -47,14 +59,15 @@ class HrPrePayroll(models.Model):
                 self.total_ipv += l.amount_ipv
                 self.total_saving_fee += l.saving_fee
                 self.total_other_deducction += l.other_deductions
-            self.write({'state': 'validated'})
+            
             for concept in self.structure_id.concept_ids:
                 concept_obj = self.env["hr.wage.paying.concept"]
                 vals = {
                     'parent_id': self.id,
-                    'concept_id': concept.id. 
+                    'concept_id': concept.id,
                 }
                 concept_obj.create(vals)
+            self.write({'state': 'validated'})
 
 
     @api.multi
