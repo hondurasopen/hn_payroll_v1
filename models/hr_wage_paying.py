@@ -12,7 +12,6 @@ class HrPrePayroll(models.Model):
     state = fields.Selection( [('draft', 'Borrador'), ('validated', 'Validada'),  ('done', 'Hecho')], string="Estado", default='draft')
     payroll_type = fields.Selection( [('bi-weekly', 'Quincenal'), ('monthly', 'Mensual')], string="Tipo", default='bi-weekly')
     employee_detail_ids = fields.One2many("hr.wage.paying.line", "parent_id", "Detalle de empleados")
-    concept_ids = fields.One2many("hr.wage.paying.concepts", "parent_id", "Conceptos")
     journal_id = fields.Many2one("account.journal", "Diarios")
     move_id = fields.Many2one("account.move", "Asiento", readonly=True)
     structure_id = fields.Many2one("hr.special.structure", "Estructura")
@@ -45,8 +44,6 @@ class HrPrePayroll(models.Model):
                 self.total_saving_fee += l.saving_fee
                 self.total_other_deducction += l.other_deductions
             self.write({'state': 'validated'})
-            for concepts in self.structure_id.concept_ids:
-
 
 
     @api.multi
@@ -134,10 +131,3 @@ class HrPrePayrollLine(models.Model):
     amount_net = fields.Float("Neto a pagar", compute='_compute_amount')
 
     
-
-class HrConcepts(models.Model):
-    _name = 'hr.wage.paying.concepts'
-
-    parent_id = fields.Many2one("hr.wage.paying", "Planilla")
-    name = fields.Many2one("hr.contract.concepts.deductions", "Concepto")
-    amount = fields.Float("Total")
