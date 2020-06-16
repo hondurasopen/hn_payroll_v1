@@ -40,6 +40,7 @@ class HrPrePayroll(models.Model):
         self.concept_ids.unlink()
         self.write({'state': 'draft'})
 
+
     @api.multi
     def set_amounts(self):
         if self.employee_detail_ids:
@@ -51,14 +52,29 @@ class HrPrePayroll(models.Model):
                 self.total_ihss += l.amount_ihss
                 self.total_ipv += l.amount_ipv
                 self.total_saving_fee += l.saving_fee
-                self.total_other_deducction += l.other_deductions
-            
+                self.total_other_deducction += l.other_deductions            
             for concept in self.structure_id.concept_ids:
                 concept_obj = self.env["hr.wage.paying.concept"]
                 vals = {
                     'parent_id': self.id,
                     'concept_id': concept.id,
                 }
+                if concept.concept == 'gross':
+                    vals["amount"] = self.gross_total
+                if concept.concept == 'net':
+                    vals["amount"] = self.net_total
+                if concept.concept == 'loan':
+                    vals["amount"] = self.total_loan
+                if concept.concept == 'saving_fee':
+                    vals["amount"] = self.total_saving_fee
+                if concept.concept == 'ihss':
+                    vals["amount"] = self.total_ihss
+                if concept.concept == 'isr':
+                    vals["amount"] = self.total_isr
+                if concept.concept == 'other_deductions':
+                    vals["amount"] = self.total_other_deducction
+                if concept.concept == 'ipv':
+                    vals["amount"] = self.total_ipv
                 concept_obj.create(vals)
             self.write({'state': 'validated'})
 

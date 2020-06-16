@@ -35,6 +35,6 @@ class PlanificacionMasterDetail(models.Model):
 	structure_id = fields.Many2one("hr.special.structure", "Estructura")
 	account_id = fields.Many2one("account.account", "Cuenta")
 	concept_type = fields.Selection([('beneficio','Beneficio'),('deduccion','Deduccion')], "Tipo", default='deduccion')
-	concept = fields.Selection([('gross','salario Bruto'),('net','Deduccion'), ('net','Deduccion'), ('loan', 'Prestamo'), ('saving_fee', "Aportes"),
+	concept = fields.Selection([('gross','salario Bruto'),('net','Salario Neto'),('loan', 'Prestamo'), ('saving_fee', "Aportes"),
 		('ihss', "IHSS"), ('isr', 'ISR'), ('other_deductions', 'Otras Deducciones'), ('ipv', 'Impuesto vecinal')], 
 		"Concepto")
