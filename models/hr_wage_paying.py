@@ -59,6 +59,9 @@ class HrPrePayroll(models.Model):
                     'parent_id': self.id,
                     'concept_id': concept.id,
                 }
+                print("*" * 200)
+                print(concept.concept)
+                print("*" * 200)
                 if concept.concept == 'gross':
                     vals["amount"] = 100 ##sself.gross_total
                 if concept.concept == 'net':
