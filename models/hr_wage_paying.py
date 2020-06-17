@@ -60,21 +60,21 @@ class HrPrePayroll(models.Model):
                     'concept_id': concept.id,
                 }
                 if concept.concept == 'gross':
-                    vals['amount'] += self.gross_total
+                    vals['amount'] = self.gross_total
                 if concept.concept == 'net':
-                    vals['amount'] += self.net_total
+                    vals['amount'] = self.net_total
                 if concept.concept == 'loan':
-                    vals['amount'] += self.total_loan
+                    vals['amount'] = self.total_loan
                 if concept.concept == 'saving_fee':
-                    vals['amount'] += self.total_saving_fee
+                    vals['amount'] = self.total_saving_fee
                 if concept.concept == 'ihss':
-                    vals['amount'] += self.total_ihss
+                    vals['amount'] = self.total_ihss
                 if concept.concept == 'isr':
-                    vals['amount'] += self.total_isr
+                    vals['amount'] = self.total_isr
                 if concept.concept == 'other_deductions':
-                    vals['amount'] += self.total_other_deducction
+                    vals['amount'] = self.total_other_deducction
                 if concept.concept == 'ipv':
-                    vals['amount'] += self.total_ipv
+                    vals['amount'] = self.total_ipv
                 concept_obj.create(vals)
             self.write({'state': 'validated'})
 
