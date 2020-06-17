@@ -12,6 +12,7 @@
             <field name="code"/>
             <field name="concept"/>
             <field name="account_id"/>
+            <field name="structure_id"/>
             <field name="active"/>
         </tree>
     </field>

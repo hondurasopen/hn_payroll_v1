@@ -28,6 +28,7 @@ class PlanificacionMasterDetail(models.Model):
 
 class PlanificacionMasterDetail(models.Model):
 	_name = "hr.contract.concepts.deductions"
+	_order = "sequence"
 
 	name = fields.Char("Nombre de concepto")
 	code = fields.Char("Código de concepto")
