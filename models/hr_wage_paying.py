@@ -84,11 +84,11 @@ class HrPrePayroll(models.Model):
 
     @api.multi
     def create_journal_entrie(self):
-        if self.employee_detail_ids:
+        if self.concept_ids:
             period_id = self.env["account.period"].with_context(self._context).find(self.end_date)[:1]
             obj_move = self.env["account.move"]
             lineas = []
-            vals_debit = {
+            vals_bank = {
                 'debit': 0.0,
                 'credit': self.net_total,
                 'amount_currency': 0.0,
@@ -96,7 +96,7 @@ class HrPrePayroll(models.Model):
                 'account_id': self.journal_id.default_debit_account_id.id,
                 'date': self.end_date,
             }
-            vals_credit = {
+            vals_gross_wage = {
                 'debit': self.gross_total,
                 'credit': 0.0,
                 'amount_currency': 0.0,
@@ -104,12 +104,73 @@ class HrPrePayroll(models.Model):
                 'account_id': self.journal_id.default_credit_account_id.id,
                 'date': self.end_date,
             }
-            lineas.append((0, 0, vals_debit))
-            lineas.append((0, 0, vals_credit))
+            lineas.append((0, 0, vals_bank))
+            lineas.append((0, 0, vals_gross_wage))
+            for l in self.concept_ids:
+                if l.concept == 'loan' and self.total_loan > 0:
+                    vals_loan = {
+                        'debit': 0.0,
+                        'credit': self.total_loan,
+                        'amount_currency': 0.0,
+                        'name': 'Deduccción de Préstamos por planilla',
+                        'account_id': l.account.id,
+                        'date': self.end_date,
+                    }
+                    lineas.append((0, 0, vals_loan))
+                if l.concept == 'saving_fee' and self.total_saving_fee > 0:
+                    vals_saving_fee = {
+                        'debit': 0.0,
+                        'credit': self.total_loan,
+                        'amount_currency': 0.0,
+                        'name': 'Planilla aportes cooperativa',
+                        'account_id': l.account.id,
+                        'date': self.end_date,
+                    }
+                    lineas.append((0, 0, vals_saving_fee))
+                if l.concept == 'ihss' and self.total_ihss > 0:
+                    vals_ihss = {
+                        'debit': 0.0,
+                        'credit': self.total_ihss,
+                        'amount_currency': 0.0,
+                        'name': 'Planilla seguro social',
+                        'account_id': l.account.id,
+                        'date': self.end_date,
+                    }
+                    lineas.append((0, 0, vals_ihss))
+                if l.concept == 'isr' and self.total_isr > 0:
+                    vals_isr = {
+                        'debit': 0.0,
+                        'credit': self.total_isr,
+                        'amount_currency': 0.0,
+                        'name': 'Impuesto sobre la rente planilla',
+                        'account_id': l.account.id,
+                        'date': self.end_date,
+                    }
+                    lineas.append((0, 0, vals_isr))
+                if l.concept == 'other_deductions' and self.total_other_deducction > 0:
+                    vals_other_deductions = {
+                        'debit': 0.0,
+                        'credit': self.total_other_deducction,
+                        'amount_currency': 0.0,
+                        'name': 'Otras deducciones por planilla',
+                        'account_id': l.account.id,
+                        'date': self.end_date,
+                    }
+                    lineas.append((0, 0, vals_other_deductions))
+                if l.concept == 'ipv' and self.total_ipv > 0:
+                    vals_other_deductions = {
+                        'debit': 0.0,
+                        'credit': self.total_ipv,
+                        'amount_currency': 0.0,
+                        'name': 'Impuesto vecinal planilla',
+                        'account_id': l.account.id,
+                        'date': self.end_date,
+                    }
+                    lineas.append((0, 0, vals_other_deductions))
             vals = {
                 'journal_id': self.journal_id.id,
                 'date': self.end_date,
-                'ref': 'Sueldos y Salarios',
+                'ref': 'Sueldos y Salarios planilla',
                 'period_id': period_id.id,
                 'line_id': lineas,
             }
@@ -118,6 +179,8 @@ class HrPrePayroll(models.Model):
                 self.write({'state': 'done'})
                 self.move_id = id_move.id
             self.write({'state': 'done'})
+        else:
+            raise Warning(_('No existen parametros para generar planilla, revise estructura salarial'))
 
     @api.multi
     def get_employee(self):
