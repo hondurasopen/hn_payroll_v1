@@ -96,74 +96,75 @@ class HrPrePayroll(models.Model):
                 'account_id': self.journal_id.default_debit_account_id.id,
                 'date': self.end_date,
             }
-            vals_gross_wage = {
-                'debit': self.gross_total,
-                'credit': 0.0,
-                'amount_currency': 0.0,
-                'name': 'Sueldos y Salarios',
-                'account_id': self.journal_id.default_credit_account_id.id,
-                'date': self.end_date,
-            }
             lineas.append((0, 0, vals_bank))
-            lineas.append((0, 0, vals_gross_wage))
             for l in self.concept_ids:
-                if l.concept == 'loan' and self.total_loan > 0:
+                if l.concept_id.concept == 'gross' and self.gross_total > 0:
+                    vals_gross_wage = {
+                        'debit': self.gross_total,
+                        'credit': 0.0,
+                        'amount_currency': 0.0,
+                        'name': 'Sueldos y Salarios',
+                        'account_id': l.concept_id.account_id.id,
+                        'date': self.end_date,
+                    }
+                    lineas.append((0, 0, vals_gross_wage))
+                if l.concept_id.concept == 'loan' and self.total_loan > 0:
                     vals_loan = {
                         'debit': 0.0,
                         'credit': self.total_loan,
                         'amount_currency': 0.0,
                         'name': 'Deduccción de Préstamos por planilla',
-                        'account_id': l.account.id,
+                        'account_id': l.concept_id.account.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_loan))
-                if l.concept == 'saving_fee' and self.total_saving_fee > 0:
+                if l.concept_id.concept == 'saving_fee' and self.total_saving_fee > 0:
                     vals_saving_fee = {
                         'debit': 0.0,
                         'credit': self.total_loan,
                         'amount_currency': 0.0,
                         'name': 'Planilla aportes cooperativa',
-                        'account_id': l.account.id,
+                        'account_id': l.concept_id.account.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_saving_fee))
-                if l.concept == 'ihss' and self.total_ihss > 0:
+                if l.concept_id.concept == 'ihss' and self.total_ihss > 0:
                     vals_ihss = {
                         'debit': 0.0,
                         'credit': self.total_ihss,
                         'amount_currency': 0.0,
                         'name': 'Planilla seguro social',
-                        'account_id': l.account.id,
+                        'account_id': l.concept_id.account.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_ihss))
-                if l.concept == 'isr' and self.total_isr > 0:
+                if l.concept_id.concept == 'isr' and self.total_isr > 0:
                     vals_isr = {
                         'debit': 0.0,
                         'credit': self.total_isr,
                         'amount_currency': 0.0,
                         'name': 'Impuesto sobre la rente planilla',
-                        'account_id': l.account.id,
+                        'account_id': l.concept_id.account.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_isr))
-                if l.concept == 'other_deductions' and self.total_other_deducction > 0:
+                if l.concept_id.concept == 'other_deductions' and self.total_other_deducction > 0:
                     vals_other_deductions = {
                         'debit': 0.0,
                         'credit': self.total_other_deducction,
                         'amount_currency': 0.0,
                         'name': 'Otras deducciones por planilla',
-                        'account_id': l.account.id,
+                        'account_id': l.concept_id.account.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_other_deductions))
-                if l.concept == 'ipv' and self.total_ipv > 0:
+                if l.concept_id.concept == 'ipv' and self.total_ipv > 0:
                     vals_other_deductions = {
                         'debit': 0.0,
                         'credit': self.total_ipv,
                         'amount_currency': 0.0,
                         'name': 'Impuesto vecinal planilla',
-                        'account_id': l.account.id,
+                        'account_id': l.concept_id.account.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_other_deductions))
