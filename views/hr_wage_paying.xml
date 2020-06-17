@@ -47,11 +47,11 @@
                     <field name="employee_id" readonly="1" options="{'no_create': True}"/>
                     <field name="wage" readonly="1" sum="Total"/>
                     <field name="other_incomes"/>
-                    <field name="amount_ihss"/>
-                    <field name="loan_fee"/>
-                    <field name="saving_fee"/>
-                    <field name="amount_isr"/>
-                    <field name="amount_ipv"/>
+                    <field name="amount_ihss" sum="Total"/>
+                    <field name="loan_fee" sum="Total"/>
+                    <field name="saving_fee" sum="Total"/>
+                    <field name="amount_isr" sum="Total"/>
+                    <field name="amount_ipv" sum="Total"/>
                     <field name="other_deductions"/>
                     <field name="gross_wage" sum="Total" />
                     <field name="amount_deduction" sum="Total" />
