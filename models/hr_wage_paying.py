@@ -128,7 +128,7 @@ class HrPrePayroll(models.Model):
                 if l.concept_id.concept == 'saving_fee' and self.total_saving_fee > 0:
                     vals_saving_fee = {
                         'debit': 0.0,
-                        'credit': self.saving_fee,
+                        'credit': self.total_saving_fee,
                         'amount_currency': 0.0,
                         'name': 'Planilla aportes cooperativa',
                         'account_id': l.concept_id.account_id.id,
