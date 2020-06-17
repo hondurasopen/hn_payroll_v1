@@ -7,6 +7,7 @@
     <field name="model">hr.contract.concepts.deductions</field>
     <field name="arch" type="xml">
         <tree string="Concepto beneficios">
+            <field name="sequence" />
             <field name="name"/>
             <field name="code"/>
             <field name="concept"/>
@@ -33,6 +34,7 @@
                             <field name="code" />
                             <field name="account_id" options="{'no_create': True}"/>
                             <field name="active" />
+                            <field name="sequence" />
                         </group>
                 </group>
             </sheet>
