@@ -220,6 +220,7 @@ class HrPrePayroll(models.Model):
 
 class HrPrePayrollLine(models.Model):
     _name = 'hr.wage.paying.line'
+    _rec_name = "employee_id"
 
     @api.one
     @api.depends("gross_wage", "loan_fee", "saving_fee", "amount_isr", "amount_ipv", "other_incomes", "other_deductions")

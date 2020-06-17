@@ -57,6 +57,7 @@
      <button name="set_amounts" type="object" string="Procesar Nómina" states="draft" class="oe_highlight" />
     <field name="state" widget="statusbar" nolabel="1"/>
 </header>
+<sheet>
     <div class="oe_right oe_button_box" position="inside">
         <button class="oe_stat_button"
             icon="fa-strikethrough"
@@ -121,13 +122,14 @@
             </field>
         </page>
     </notebook>
+</sheet>
 </form>
 </field>
 </record>   
 
     <!--  Action of Import inventory wizard -->
     <record model="ir.actions.act_window" id="action_hr_wage_paying">
-    <field name="name">Nómina por lote</field>
+    <field name="name">Nómina por lotes</field>
     <field name="res_model">hr.wage.paying</field>
     <field name="view_type">form</field>
     <field name="view_model">form,tree</field>
