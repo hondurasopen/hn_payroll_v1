@@ -80,7 +80,7 @@
             <field name="concept_ids">
                 <tree>
                     <field name="concept_id" />
-                    <field name="amount" sum="Total"/>
+                    <field name="amount" />
                </tree>
             </field>
         </page>

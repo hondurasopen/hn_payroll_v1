@@ -27,6 +27,7 @@
                         <group>
                             <field name="name" />
                             <field name="concept"/>
+                            <field name="structure_id" options="{'no_create': True}"/>
                         </group>
                         <group>
                             <field name="code" />
