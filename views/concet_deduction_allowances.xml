@@ -30,7 +30,7 @@
                         </group>
                         <group>
                             <field name="code" />
-                            <field name="account_id"/>
+                            <field name="account_id" options="{'no_create': True}"/>
                             <field name="active" />
                         </group>
                 </group>
