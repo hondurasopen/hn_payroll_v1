@@ -114,7 +114,7 @@ class HrPrePayroll(models.Model):
                         'credit': self.total_loan,
                         'amount_currency': 0.0,
                         'name': 'Deduccción de Préstamos por planilla',
-                        'account_id': l.concept_id.account.id,
+                        'account_id': l.concept_id.account_id.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_loan))
@@ -124,7 +124,7 @@ class HrPrePayroll(models.Model):
                         'credit': self.total_loan,
                         'amount_currency': 0.0,
                         'name': 'Planilla aportes cooperativa',
-                        'account_id': l.concept_id.account.id,
+                        'account_id': l.concept_id.account_id.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_saving_fee))
@@ -134,7 +134,7 @@ class HrPrePayroll(models.Model):
                         'credit': self.total_ihss,
                         'amount_currency': 0.0,
                         'name': 'Planilla seguro social',
-                        'account_id': l.concept_id.account.id,
+                        'account_id': l.concept_id.account_id.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_ihss))
@@ -144,7 +144,7 @@ class HrPrePayroll(models.Model):
                         'credit': self.total_isr,
                         'amount_currency': 0.0,
                         'name': 'Impuesto sobre la rente planilla',
-                        'account_id': l.concept_id.account.id,
+                        'account_id': l.concept_id.account_id.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_isr))
@@ -154,7 +154,7 @@ class HrPrePayroll(models.Model):
                         'credit': self.total_other_deducction,
                         'amount_currency': 0.0,
                         'name': 'Otras deducciones por planilla',
-                        'account_id': l.concept_id.account.id,
+                        'account_id': l.concept_id.account_id.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_other_deductions))
@@ -164,7 +164,7 @@ class HrPrePayroll(models.Model):
                         'credit': self.total_ipv,
                         'amount_currency': 0.0,
                         'name': 'Impuesto vecinal planilla',
-                        'account_id': l.concept_id.account.id,
+                        'account_id': l.concept_id.account_id.id,
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_other_deductions))
