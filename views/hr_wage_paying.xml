@@ -46,7 +46,6 @@
                 <tree editable="top" create="0">
                     <field name="employee_id" readonly="1" options="{'no_create': True}"/>
                     <field name="wage" readonly="1" sum="Total"/>
-                    <field name="other_incomes"/>
                     <field name="amount_ihss" sum="Total"/>
                     <field name="loan_fee" sum="Total"/>
                     <field name="saving_fee" sum="Total"/>
@@ -97,7 +96,7 @@
     <field name="view_model">form,tree</field>
     </record>
 
-  <menuitem string="Nómina por lote" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="10"/>
+  <menuitem string="Nómina por lotes" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="10"/>
 
 </data>
 </openerp>

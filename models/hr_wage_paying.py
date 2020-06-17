@@ -60,6 +60,8 @@ class HrPrePayroll(models.Model):
                     'parent_id': self.id,
                     'concept_id': concept.id,
                 }
+                if concept.concept == 'basic':
+                    vals['amount'] = self.gross_total
                 if concept.concept == 'gross':
                     vals['amount'] = self.gross_total
                 if concept.concept == 'net':
