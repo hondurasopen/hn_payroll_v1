@@ -20,10 +20,10 @@ class HrPrePayroll(models.Model):
 
     gross_total = fields.Float("Salario Bruto", readonly=True)
     net_total = fields.Float("Neto salarios", readonly=True)
-    total_isr = fields.Float("Total ISR", readonly=True)
+    total_isr = fields.Float("Impuesto sobe renta", readonly=True)
     total_ihss = fields.Float("Total IHSS", readonly=True)
-    total_ipv = fields.Float("Total IPV", readonly=True)
-    total_saving_fee = fields.Float("Total aportes cooperativa", readonly=True)
+    total_ipv = fields.Float("Impuesto vecinal", readonly=True)
+    total_saving_fee = fields.Float("Aportes cooperativa", readonly=True)
     total_loan = fields.Float("Total préstamos", readonly=True)
     total_other_deducction = fields.Float("Total otras deducciones", readonly=True)
 
@@ -36,7 +36,7 @@ class HrPrePayroll(models.Model):
         self.total_isr = 0
         self.total_ipv = 0
         self.total_saving_fee = 0
-        self.total_other_deducction 
+        self.total_other_deducction = 0
         self.concept_ids.unlink()
         self.write({'state': 'draft'})
 
