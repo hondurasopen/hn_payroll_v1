@@ -43,6 +43,13 @@ class HrPrePayroll(models.Model):
 
 
     @api.multi
+    def return_to_validated(self):
+        self.move_id.state = 'draft'
+        self.move_id.unlink()
+        self.write({'state': 'validated'})
+
+
+    @api.multi
     def set_amounts(self):
         if self.employee_detail_ids:
             for l in self.employee_detail_ids:
@@ -121,7 +128,7 @@ class HrPrePayroll(models.Model):
                 if l.concept_id.concept == 'saving_fee' and self.total_saving_fee > 0:
                     vals_saving_fee = {
                         'debit': 0.0,
-                        'credit': self.total_loan,
+                        'credit': self.saving_fee,
                         'amount_currency': 0.0,
                         'name': 'Planilla aportes cooperativa',
                         'account_id': l.concept_id.account_id.id,
@@ -143,7 +150,7 @@ class HrPrePayroll(models.Model):
                         'debit': 0.0,
                         'credit': self.total_isr,
                         'amount_currency': 0.0,
-                        'name': 'Impuesto sobre la rente planilla',
+                        'name': 'Impuesto sobre la renta planilla',
                         'account_id': l.concept_id.account_id.id,
                         'date': self.end_date,
                     }
