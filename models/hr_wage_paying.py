@@ -60,7 +60,7 @@ class HrPrePayroll(models.Model):
                     'concept_id': concept.id,
                 }
                 if concept.concept == 'gross':
-                    vals["amount"] += 100
+                    vals["amount"] += self.gross_total
                 if concept.concept == 'net':
                     vals["amount"] += self.net_total
                 if concept.concept == 'loan':
