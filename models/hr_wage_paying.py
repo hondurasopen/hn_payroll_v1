@@ -35,6 +35,7 @@ class HrPrePayroll(models.Model):
         self.total_loan = 0
         self.total_isr = 0
         self.total_ipv = 0
+        self.total_ihss = 0
         self.total_saving_fee = 0
         self.total_other_deducction = 0
         self.concept_ids.unlink()
