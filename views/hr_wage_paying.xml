@@ -66,6 +66,7 @@
                  <field name="net_total"/>
         </group>
         <group>
+                 <field name="total_ihss" />
                  <field name="total_isr" />
                  <field name="total_ipv" />
                  <field name="total_saving_fee" />
