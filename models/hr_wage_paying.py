@@ -226,7 +226,9 @@ class HrPrePayroll(models.Model):
             'payment_date': self.end_date,
             'payroll_id': self.id,
         }
-        historical_object.create(vals)        
+        id_histo = historical_object.create(vals)
+        print "*" * 200
+        print id_histo
 
 
     @api.multi
