@@ -250,6 +250,23 @@ class HrPrePayroll(models.Model):
 
             line_obj.create(vals)
 
+
+    @api.model
+    def create(self, vals):
+        start_date = str(vals.get("start_date"))
+        end_date = str(vals.get("start_date"))
+        vals["name"] = "Nómina de " + ":" + start_date + "al" + ":" + end_date
+        return super(HrPrePayroll, self).create(vals)
+
+
+    @api.multi
+    def write(self,vals):
+        start_date = str(vals.get("start_date"))
+        end_date = str(vals.get("start_date"))
+        vals["name"] = "Nómina de " + ":" + start_date + "al" + ":" + end_date
+        return super(HrPrePayroll, self).create(vals)
+
+
     @api.multi
     def unlink(self):
         for payroll in self:
