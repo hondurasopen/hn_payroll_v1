@@ -261,8 +261,8 @@ class HrPrePayroll(models.Model):
 
     @api.multi
     def write(self,vals):
-        start_date = str(vals.get("start_date"))
-        end_date = str(vals.get("start_date"))
+        start_date = vals.get("start_date")
+        end_date = vals.get("start_date")
         vals["name"] = "Nómina de " + ":" + start_date + "al" + ":" + end_date
         return super(HrPrePayroll, self).write(vals)
 
