@@ -186,9 +186,48 @@ class HrPrePayroll(models.Model):
             if id_move :
                 self.write({'state': 'done'})
                 self.move_id = id_move.id
+            self.crate_historial_employee()
             self.write({'state': 'done'})
         else:
             raise Warning(_('No existen parametros para generar planilla, revise estructura salarial'))
+
+
+    @api.multi
+    def crate_historial_employee(self):
+        for employee in self.employee_detail_ids:
+            contract_obj = self.env["hr.contract"].search([('employee_id', '=', l.id)], limit=1)
+            if employee.amount_ihss > 0:
+                concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'ihss'), ('structure_id', '=', self.structure_id.id)], limit=1)
+                self.create_historical(contract_obj.id, concept_obj.concept_type, employee.amount_ihss, concept_obj.id)
+            if employee.loan_fee > 0:
+                concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'loan'), ('structure_id', '=', self.structure_id.id)], limit=1)
+                self.create_historical(contract_obj.id, concept_obj.concept_type, employee.loan_fee, concept_obj.id)
+            if employee.saving_fee > 0:
+                concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'saving_fee'), ('structure_id', '=', self.structure_id.id)], limit=1)
+                self.create_historical(contract_obj.id, concept_obj.concept_type, employee.saving_fee, concept_obj.id)
+            if employee.amount_isr > 0:
+                concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'isr'), ('structure_id', '=', self.structure_id.id)], limit=1)
+                self.create_historical(contract_obj.id, concept_obj.concept_type, employee.amount_isr, concept_obj.id)
+            if employee.amount_ipv > 0:
+                concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'ipv'), ('structure_id', '=', self.structure_id.id)], limit=1)
+                self.create_historical(contract_obj.id, concept_obj.concept_type, employee.amount_ipv, concept_obj.id)
+            if employee.other_deductions > 0:
+                concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'other_deductions'), ('structure_id', '=', self.structure_id.id)], limit=1)
+                self.create_historical(contract_obj.id, concept_obj.concept_type, employee.other_deductions, concept_obj.id)
+
+    @api.multi
+    def create_historical(self, contract_id, concept_type, amount_fee, concept_id):
+        historical_object = self.env["hr.historial.contract"]
+        vals = {
+            'name': concept_id,
+            'contract_id':contract_id,
+            'concept_type': concept_type,
+            'amount_fee': amount_fee,
+            'payment_date': self.end_date,
+            'payroll_id': self.id,
+        }
+        historical_object.create(vals)        
+
 
     @api.multi
     def get_employee(self):
@@ -217,6 +256,7 @@ class HrPrePayroll(models.Model):
             if (payroll.state == 'validado' or payroll.state == 'done'):
                 raise Warning(('No puede borrar este registro se encuentra en estado validado'))
         return super(HrPrePayroll, self).unlink()
+
 
 class HrPrePayrollLine(models.Model):
     _name = 'hr.wage.paying.line'

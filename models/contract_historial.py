@@ -13,4 +13,5 @@ class PlanificacionMasterDetail(models.Model):
 	number_fee = fields.Integer("Número de pagos")
 
 	payment_date = fields.Date("Fecha")
+	payroll_id = fields.Many2one("hr.wage.paying", "Nómina")
 
