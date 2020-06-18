@@ -195,7 +195,7 @@ class HrPrePayroll(models.Model):
     @api.multi
     def crate_historial_employee(self):
         for employee in self.employee_detail_ids:
-            contract_obj = self.env["hr.contract"].search([('employee_id', '=', l.id)], limit=1)
+            contract_obj = self.env["hr.contract"].search([('employee_id', '=', employee.id)], limit=1)
             if employee.amount_ihss > 0:
                 concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'ihss'), ('structure_id', '=', self.structure_id.id)], limit=1)
                 self.create_historical(contract_obj.id, concept_obj.concept_type, employee.amount_ihss, concept_obj.id)
