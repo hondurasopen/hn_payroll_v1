@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp import models, fields, api, exceptions, _
 from openerp.exceptions import except_orm, Warning, RedirectWarning
+from datetime import datetime, timedelta
 
 class HrPrePayroll(models.Model):
     _name = 'hr.wage.paying'
@@ -26,6 +27,12 @@ class HrPrePayroll(models.Model):
     total_saving_fee = fields.Float("Aportes cooperativa", readonly=True)
     total_loan = fields.Float("Total préstamos", readonly=True)
     total_other_deducction = fields.Float("Total otras deducciones", readonly=True)
+
+    @api.onchange("end_date")
+    def onchange_end_date(self):
+        if self.end_date:
+            varialble_string = datetime.strptime(self.end_date, '%Y-%m-%d')
+            self.name = self.name + " " + varialble_string.strftime("%B")
 
 
     @api.multi
@@ -192,10 +199,14 @@ class HrPrePayroll(models.Model):
             raise Warning(_('No existen parametros para generar planilla, revise estructura salarial'))
 
 
+
     @api.multi
     def crate_historial_employee(self):
         for employee in self.employee_detail_ids:
             contract_obj = self.env["hr.contract"].search([('employee_id', '=', employee.employee_id.id)], limit=1)
+            if employee.gross_wage > 0:
+                self.create_historical_wage(contract_obj.id, employee.gross_wage)
+
             if employee.amount_ihss > 0:
                 concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'ihss'), ('structure_id', '=', self.structure_id.id)], limit=1)
                 self.create_historical(contract_obj.id, concept_obj.concept_type, employee.amount_ihss, concept_obj.id)
@@ -215,6 +226,22 @@ class HrPrePayroll(models.Model):
                 concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'other_deductions'), ('structure_id', '=', self.structure_id.id)], limit=1)
                 self.create_historical(contract_obj.id, concept_obj.concept_type, employee.other_deductions, concept_obj.id)
 
+
+    @api.multi
+    def create_historical_wage(self, contract_id, wage):
+        wage_obj = self.env["hr.historical.wage"]
+        varialble_string = datetime.strptime(self.end_date, '%Y-%m-%d')
+        vals = {
+            'contract_id': contract_id,
+            'gross_salary': wage,
+            'payment_date': self.end_date,
+            'payroll_id': self.id,
+            'month': varialble_string.strftime("%B"),
+        }
+        wage_obj.create(vals)
+
+
+
     @api.multi
     def create_historical(self, contract_id, concept_type, amount_fee, concept_id):
         historical_object = self.env["hr.historial.contract"]
@@ -226,7 +253,7 @@ class HrPrePayroll(models.Model):
             'payment_date': self.end_date,
             'payroll_id': self.id,
         }
-        id_histo = historical_object.create(vals)
+        historical_object.create(vals)
 
 
     @api.multi
