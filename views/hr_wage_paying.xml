@@ -70,6 +70,7 @@
             <field name="start_date" required="1"/>
             <field name="payroll_type" required="1"/>
             <field name="structure_id" required="1" options="{'no_create': True}"/>
+            <field name="name" placeholder="Nómina primera quincena"/>
         </group>
         <group>
             <field name="end_date" required="1"/>
@@ -111,7 +112,7 @@
                  <field name="total_other_deducction" />
         </group>
         </group>
-             <field name="name" placeholder="Nómina primera quincena"/>
+             
         </page>
         <page string="Conceptos">
             <field name="concept_ids">

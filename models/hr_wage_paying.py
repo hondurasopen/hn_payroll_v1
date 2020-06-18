@@ -6,7 +6,7 @@ class HrPrePayroll(models.Model):
     _name = 'hr.wage.paying'
 
 
-    name = fields.Text("Descripción")
+    name = fields.Char("Descripción", default="Nómina")
     start_date = fields.Date("Fecha inicial")
     end_date = fields.Date("Fecha final")
     state = fields.Selection( [('draft', 'Borrador'), ('validated', 'Validada'),  ('done', 'Hecho')], string="Estado", default='draft')
@@ -249,23 +249,6 @@ class HrPrePayroll(models.Model):
                 vals["wage"] = contract_obj.wage
 
             line_obj.create(vals)
-
-
-    @api.model
-    def create(self, vals):
-        start_date = str(vals.get("start_date"))
-        end_date = str(vals.get("start_date"))
-        vals["name"] = "Nómina de " + ":" + start_date + "al" + ":" + end_date
-        return super(HrPrePayroll, self).create(vals)
-
-
-    @api.multi
-    def write(self,vals):
-        start_date = vals.get("start_date")
-        end_date = vals.get("start_date")
-        vals["name"] = "Nómina de " + ":" + start_date + "al" + ":" + end_date
-        return super(HrPrePayroll, self).write(vals)
-
 
     @api.multi
     def unlink(self):
