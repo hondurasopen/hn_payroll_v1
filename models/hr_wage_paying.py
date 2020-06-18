@@ -218,6 +218,11 @@ class HrPrePayroll(models.Model):
     @api.multi
     def create_historical(self, contract_id, concept_type, amount_fee, concept_id):
         historical_object = self.env["hr.historial.contract"]
+        print "*" * 200
+        print contract_id
+        print concept_type
+        print amount_fee
+        print concept_id 
         vals = {
             'name': concept_id,
             'contract_id':contract_id,
