@@ -16,7 +16,7 @@
         "views/doff_add_contract.xml",
         "views/allowance_deduction_view.xml",
         "views/hr_wage_paying.xml",
-        "views/special_strcuture.xml"
+        "views/special_strcuture.xml",
         "reports/report_payroll.xml",
         "reports/report_payroll_view.xml",
     ],
