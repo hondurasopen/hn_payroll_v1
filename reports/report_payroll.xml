@@ -6,7 +6,7 @@
         	model="hr.wage.paying"
         	string="Imprimir Nómina"
         	name="hn_payroll_v1.report_payroll_view"
-        	file="hn_payroll_v1.report_payroll_print_view"
+        	file="hn_payroll_v1.report_payroll_view"
         	report_type="qweb-pdf" />
 	</data>
 </openerp>
