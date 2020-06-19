@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+<data>
+<template id="report_payroll_print_view">
+<t t-call="report.html_container">			
+<t t-foreach="docs" t-as="o">
+    <div class="header">
+      <h2 class="text-center" style="font-weight:bold;">
+        <span t-field="user.company_id.name"/>
+      </h2>
+      <h4 class="text-center"><strong>Nómina</strong></h4>
+    </div>   
+
+    <div class="footer">
+      <div class="col-xs-12">
+          <div style="border-bottom: 1px solid black;"></div>
+      </div>
+      <div class="row text-center">
+        <ul class="list-inline">
+            <li>Página:</li>
+            <li><span class="page"/></li>
+            <li>/</li>
+            <li><span class="topage"/></li>
+        </ul>
+      </div>
+    </div>
+
+					
+<div class="page">
+<div class="row">
+<table class="table table-condensed" style="width:100%;font-size:12px;">
+  <thead style="background:gray;color:#FFFFFF;">
+      <tr style="font-size:12px;">
+      <th class="text-left" style="width:20%;"><strong>Empleado</strong></th>
+      <th class="text-left" style="width:40%;"><strong>Salario</strong></th>
+      <th class="text-center" style="width:20%;"><strong>Total Unidades</strong></th>
+      <th class="text-center" style="width:20%;"><strong>Unidad de medida</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+</div>
+
+						
+</div>
+					
+				</t>
+			</t>
+	
+
+		</template>
+	</data>
+</openerp>
