@@ -99,6 +99,8 @@ class HrPrePayroll(models.Model):
     @api.multi
     def create_journal_entrie(self):
         if self.concept_ids:
+            if not self.journal_id:
+                raise Warning(_('Debe de seleccionar un diario'))
             period_id = self.env["account.period"].with_context(self._context).find(self.end_date)[:1]
             obj_move = self.env["account.move"]
             lineas = []
