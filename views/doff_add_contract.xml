@@ -43,14 +43,9 @@
 <field name="model">hr.contract</field>
 <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
 <field name="arch"  type="xml">
-    <xpath expr="//field[@name='type_id']" position="after"> 
-        <button class="oe_stat_button"
-        icon="fa-bars"
-        type="action" name="%(action_hr_historial_contract)d"
-        string="Historial Deducciones">
-        </button>
-   </xpath>
-
+    <field name="type_id" position="after">
+        <field name="active"/>
+    </field>
     <notebook position="inside">
        <page string="Salarios brutos">
             <field name="historical_wage_ids"/>
