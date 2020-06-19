@@ -2,6 +2,19 @@
 <openerp>
 <data>
 
+<record id="hr_historical_wage_view_tree" model="ir.ui.view">
+<field name="name">hr.historical.wage.tree.view</field>
+<field name="model">hr.historical.wage</field>                     
+<field name="arch" type="xml">
+     <tree string="Historial Salarios" delete="0" create="0" edit="0">
+        <field name="month" />
+        <field name="payroll_id" />
+        <field name="gross_salary"  sum="Total"/>
+        <field name="payment_date"/>
+     </tree>                
+</field>
+</record>
+
 <record id="hr_historial_contract_view_tree" model="ir.ui.view">
 <field name="name">hr.historial.contract.tree.view</field>
 <field name="model">hr.historial.contract</field>                     
@@ -39,10 +52,13 @@
    </xpath>
 
     <notebook position="inside">
-       <page string="Beneficios y deducciones">
+       <page string="Salarios brutos">
+            <field name="historical_wage_ids"/>
+       </page>
+       <page string="Parámetros Beneficios/deducciones">
            <field name="allowences_ids"/>
         </page> 
-        <page string="Historial deducciones y Beneficios">
+        <page string="Historial deducciones">
         <group>
             <group>
             <p><strong>Historial de deducciones y beneficios del empleado
