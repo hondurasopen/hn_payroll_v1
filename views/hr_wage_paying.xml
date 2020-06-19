@@ -36,6 +36,7 @@
 <field name="model">hr.wage.paying</field>
 <field name="arch" type="xml">
     <tree string="Preparación de nomina">
+        <field name="name" />
         <field name="start_date"/>
         <field name="end_date"/>
         <field name="net_total" sum="Total"/>
@@ -67,21 +68,21 @@
     </div> 
     <group>
         <group>
-            <field name="start_date" required="1"/>
-            <field name="payroll_type" required="1"/>
-            <field name="structure_id" required="1" options="{'no_create': True}"/>
-            <field name="name" placeholder="Nómina primera quincena"/>
+            <field name="start_date" required="1" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+            <field name="payroll_type" required="1" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+            <field name="structure_id" required="1" options="{'no_create': True}" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+            <field name="name" placeholder="Nómina primera quincena" />
         </group>
         <group>
-            <field name="end_date" required="1"/>
-            <field name="journal_id" options="{'no_create': True}"/>
-            <field name="move_id" options="{'no_create': True}"/>
+            <field name="end_date" required="1" attrs="{'readonly': [('state','!=', 'draft')]}"/>
+            <field name="journal_id" options="{'no_create': True}" domain="[('type', '=', 'bank')]" attrs="{'readonly': ['|', ('state','=', 'draft'), ('state', '=', 'done') ]}"/>
+            <field name="move_id" options="{'no_create': True}" readonly="1"/>
         </group>
     </group>
 
     <notebook>
         <page string="Detalle de empleados">
-            <field name="employee_detail_ids">
+            <field name="employee_detail_ids" attrs="{'readonly': [('state','!=', 'draft')]}">
                 <tree editable="top" create="0">
                     <field name="employee_id" readonly="1" options="{'no_create': True}"/>
                     <field name="wage" readonly="1" sum="Total"/>
@@ -115,7 +116,7 @@
              
         </page>
         <page string="Conceptos">
-            <field name="concept_ids">
+            <field name="concept_ids" readonly="1">
                 <tree>
                     <field name="concept_id" />
                     <field name="amount" />
@@ -130,13 +131,13 @@
 
     <!--  Action of Import inventory wizard -->
     <record model="ir.actions.act_window" id="action_hr_wage_paying">
-    <field name="name">Nómina por lotes</field>
+    <field name="name">Procesamiento de nómina</field>
     <field name="res_model">hr.wage.paying</field>
     <field name="view_type">form</field>
     <field name="view_model">form,tree</field>
     </record>
 
-  <menuitem string="Nómina por lotes" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="10"/>
+  <menuitem string="Procesamiento de nómina" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="10"/>
 
 </data>
 </openerp>
