@@ -42,7 +42,7 @@
       </tr>
   </thead>
   <tbody>
-    <tr t-foreach="o.sale_line_fleet_ids" t-as="l">
+    <tr t-foreach="o.employee_detail_ids" t-as="l">
         <td class="text-center" style="width:20%;;border:1px solid black;">
             <span t-field="l.employee_id.name"/>
         </td>
