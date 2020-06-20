@@ -27,7 +27,7 @@
 
 					
 <div class="page">
-<div class="row">
+
 <table class="table table-condensed" style="width:100%;font-size:12px;">
   <thead style="background:gray;color:#FFFFFF;">
       <tr style="font-size:12px;">
@@ -69,11 +69,7 @@
         </td>
     </tr>
   </tbody>
-</table>
-
-</div>
-
-						
+</table>					
 </div>
 					
 				</t>
