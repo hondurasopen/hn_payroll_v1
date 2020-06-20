@@ -29,7 +29,7 @@
 <div class="page">
 
 <table class="table table-condensed" style="width:100%;font-size:11px;">
-  <thead style="background:#27AE60;color:white;">
+  <thead style="background:gray;color:white;">
       <tr style="font-size:12px;">
       <th class="text-center" style="width:15%;"><strong>Empleado</strong></th>
       <th class="text-center" style="width:10%;"><strong>Salario</strong></th>
