@@ -312,6 +312,9 @@ class HrPrePayrollLine(models.Model):
     amount_deduction = fields.Float("Total de deducciones", compute='_compute_amount')
     amount_net = fields.Float("Neto a pagar", compute='_compute_amount')
 
+    start_date = fields.Date("Fecha inicial")
+    end_date = fields.Date("Fecha final")
+
 
 class HrPreConcept(models.Model):
     _name = 'hr.wage.paying.concept'
