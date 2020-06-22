@@ -2,7 +2,7 @@
 <openerp>
 <data>
 <template id="report_payrslip_view">
-<t t-call="web.external_layout">
+<t t-call="report.basic_layout">
 <t t-foreach="docs" t-as="o">
 			
 <div class="page">
