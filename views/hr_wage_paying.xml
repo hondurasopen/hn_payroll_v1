@@ -19,7 +19,25 @@
             <field name="parent_id" readonly="1"/>
         </group>
     </group>
-
+    <notebook>
+        <page string="Detalla">
+            <group>
+                <group>
+                    <field name="gross_wage" readonly="1"/>
+                     <field name="amount_net" readonly="1"/>
+                </group>
+                <group>
+                    <field name="amount_ihss" readonly="1"/>
+                    <field name="loan_fee" readonly="1"/>
+                    <field name="saving_fee" readonly="1"/>
+                    <field name="amount_isr" readonly="1"/>
+                    <field name="amount_ipv" readonly="1"/>
+                    <field name="other_deductions" readonly="1"/>
+                    <field name="amount_deduction" readonly="1"/>
+                </group>
+            </group>
+        </page>
+    </notebook>
 </sheet>
 </form>
 </field>
