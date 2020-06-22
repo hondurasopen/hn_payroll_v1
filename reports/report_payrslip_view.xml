@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+<data>
+<template id="report_payroll_view">	
+<t t-foreach="docs" t-as="o">
+    <div class="header">
+      <h3 class="text-center" style="font-weight:bold;">
+        <span t-field="user.company_id.name"/>
+      </h3>
+      <h4 class="text-center"><strong>Empleado: </strong></h4>
+    </div>   
+
+
+					
+<div class="page">
+
+<br/>
+<table class="table table-condensed" style="width:100%;font-size:11px;">
+  <thead style="background:gray;color:white;">
+      <tr style="font-size:12px;">
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Empleado</strong></th>
+      <th class="text-center" style="width:10%;border:1px solid black;"><strong>Salario</strong></th>
+      <th class="text-center" style="width:10%;border:1px solid black;"><strong>IHSS</strong></th>
+      <th class="text-center" style="width:10%;border:1px solid black;"><strong>Préstamo</strong></th>
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Aporte Cooperativa</strong></th>
+      <th class="text-center" style="width:10%;border:1px solid black;"><strong>ISR</strong></th>
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Total deducciones</strong></th>
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Salario Neto</strong></th>
+      </tr>
+  </thead>
+  <tbody style="font-size:11px;">
+  </tbody>
+</table>
+<br/>
+
+</div>					
+</t>
+</template>
+</data>
+</openerp>

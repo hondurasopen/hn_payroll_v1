@@ -298,7 +298,7 @@ class HrPrePayrollLine(models.Model):
     	self.amount_deduction = self.loan_fee + self.saving_fee + self.amount_isr + self.amount_ipv + self.other_deductions + self.amount_ihss
     	self.amount_net = self.gross_wage - self.amount_deduction
 
-    parent_id = fields.Many2one("hr.wage.paying", "Pago")
+    parent_id = fields.Many2one("hr.wage.paying", "Nómina")
     employee_id = fields.Many2one("hr.employee", "Empleado")
     wage = fields.Float("Salario")
     amount_ihss = fields.Float("IHSS")

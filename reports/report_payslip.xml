@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+    	<report
+        	id="report_payslip_print"
+        	model="hr.wage.paying.line"
+        	string="Imprimir Voucher"
+        	name="hn_payroll_v1.report_payrslip_view"
+        	file="hn_payroll_v1.report_payrslip_view"
+        	report_type="qweb-pdf" />
+	</data>
+</openerp>

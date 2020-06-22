@@ -19,6 +19,8 @@
         "views/special_strcuture.xml",
         "reports/report_payroll.xml",
         "reports/report_payroll_view.xml",
+        "reports/report_payslip.xml",
+        "reports/report_payrslip_view.xml",
     ],
     'update_xml': [
     ],
