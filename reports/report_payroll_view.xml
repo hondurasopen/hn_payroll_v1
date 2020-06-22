@@ -9,6 +9,20 @@
         <span t-field="user.company_id.name"/>
       </h2>
       <h4 class="text-center"><strong>Nómina de: <span t-field="o.start_date"/> al: <span t-field="o.end_date"/> </strong></h4>
+      <table style="font-size:14px; width:100%; height:100px;">
+      <tr>
+        <td style="width:25%;">Total Salarios: <span t-field="o.gross_total"/></td>
+        <td style="width:25%;"> </td>
+        <td style="width:25%;">Total Deducciones: <span t-field="o.gross_total"/></td>
+        <td style="width:25%;"> </td>
+      </tr>
+      <tr>
+        <td style="width:25%;">Salrios Netos: <span t-field="o.net_total"/></td>
+        <td style="width:25%;"> </td>
+        <td style="width:25%;"></td>
+        <td style="width:25%;"> </td>
+      </tr>
+      </table>
     </div>   
 
     <div class="footer">
@@ -27,20 +41,7 @@
 
 					
 <div class="page">
-<table style="font-size:14px; width:100%; height:100px;">
-<tr>
-  <td style="width:25%;">Total Salarios: <span t-field="o.gross_total"/></td>
-  <td style="width:25%;"> </td>
-  <td style="width:25%;">Total Deducciones:<span t-field="o.gross_total"/></td>
-  <td style="width:25%;"> </td>
-</tr>
-<tr>
-  <td style="width:25%;">Salrios Netos: <span t-field="o.net_total"/></td>
-  <td style="width:25%;"> </td>
-  <td style="width:25%;"></td>
-  <td style="width:25%;"> </td>
-</tr>
-</table>
+
 <table class="table table-condensed" style="width:100%;font-size:11px;">
   <thead style="background:gray;color:white;">
       <tr style="font-size:12px;">
