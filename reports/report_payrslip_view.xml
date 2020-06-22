@@ -10,7 +10,7 @@
 <div class="footer">
 </div>
 <t t-foreach="[1, 2, 3]" t-as="i">  
-  <t t-if = "i != 3" >
+  <p t-if = "i != 3" >
 
 <div class="page">
 <div class="row">  
@@ -197,7 +197,7 @@
 </div>
 
 </div>
-</t>
+</p>
 </t>
 <p style="page-break-before:always;"></p>			
 </t>
