@@ -4,6 +4,10 @@
 <template id="report_payrslip_view">
 <t t-call="report.html_container">
 <t t-foreach="docs" t-as="o">
+
+ <div class="header">
+</div>
+
 <div class="page">
 <div class="row">  
  <table style="width:100%;">
