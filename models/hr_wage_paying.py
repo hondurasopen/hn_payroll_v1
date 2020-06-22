@@ -131,7 +131,7 @@ class HrPrePayroll(models.Model):
                         'amount_currency': 0.0,
                         'name': 'Deduccción de Préstamos por planilla',
                         'account_id': l.concept_id.account_id.id,
-                        'date': self.end_dateparent_id,
+                        'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_loan))
                 if l.concept_id.concept == 'saving_fee' and self.total_saving_fee > 0:
