@@ -9,6 +9,8 @@
 </div>
 <div class="footer">
 </div>
+<t t-foreach="[1, 2, 3]" t-as="i">  
+  <t t-if = "i != 3" >
 
 <div class="page">
 <div class="row">  
@@ -178,7 +180,7 @@
                            
             </tr>
       </table>
-   <hr/>
+
     <table style="width:100%;">
     <tr>
       <td class="text-center" style="width:100%;"><br/></td>          
@@ -191,9 +193,13 @@
           <td class="text-center" style="width:100%;"><strong>Recibi conforme:_______________________________________</strong> </td>          
         </tr>
     </table>   
+   <hr/>
 </div>
 
-</div>					
+</div>
+</t>
+</t>
+<p style="page-break-before:always;"></p>			
 </t>
 </t>
 </template>
