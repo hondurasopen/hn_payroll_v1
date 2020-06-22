@@ -166,6 +166,7 @@
     <field name="res_model">hr.wage.paying.line</field>
     <field name="view_type">form</field>
     <field name="view_model">form,tree</field>
+     <field name="view_id" ref="hr_wage_paying_line_tree_view"/>
 </record>
 
 
