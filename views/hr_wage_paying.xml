@@ -137,7 +137,18 @@
     <field name="view_model">form,tree</field>
     </record>
 
-  <menuitem string="Procesamiento de nómina" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="10"/>
+
+<record model="ir.actions.act_window" id="action_hr_wage_paying_line_menu">
+    <field name="name">Nómina de empleado</field>
+    <field name="res_model">hr.wage.paying.line</field>
+    <field name="view_type">form</field>
+    <field name="view_model">form,tree</field>
+</record>
+
+
+<menuitem string="Procesamiento de nómina" id="menu_hr_wage_paying" parent="hr.menu_hr_main" action="action_hr_wage_paying" sequence="10"/>
+
+<menuitem string="Nómina de empleado" id="menu_hr_wage_paying_employee" parent="hr.menu_hr_main" action="action_hr_wage_paying_line_menu" sequence="20"/>
 
 </data>
 </openerp>
