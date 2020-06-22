@@ -131,7 +131,7 @@ class HrPrePayroll(models.Model):
                         'amount_currency': 0.0,
                         'name': 'Deduccción de Préstamos por planilla',
                         'account_id': l.concept_id.account_id.id,
-                        'date': self.end_date,
+                        'date': self.end_dateparent_id,
                     }
                     lineas.append((0, 0, vals_loan))
                 if l.concept_id.concept == 'saving_fee' and self.total_saving_fee > 0:
@@ -312,8 +312,8 @@ class HrPrePayrollLine(models.Model):
     amount_deduction = fields.Float("Total de deducciones", compute='_compute_amount')
     amount_net = fields.Float("Neto a pagar", compute='_compute_amount')
 
-    start_date = fields.Date("Fecha inicial")
-    end_date = fields.Date("Fecha final")
+    start_date = fields.Date("Fecha inicial", related="parent_id.start_date")
+    end_date = fields.Date("Fecha final", related="parent_id.end_date")
 
 
 class HrPreConcept(models.Model):
