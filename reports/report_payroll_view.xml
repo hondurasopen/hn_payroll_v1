@@ -2,7 +2,7 @@
 <openerp>
 <data>
 <template id="report_payroll_view">
-<t t-call="report.html_container">			
+		
 <t t-foreach="docs" t-as="o">
     <div class="header">
       <h2 class="text-center" style="font-weight:bold;">
@@ -70,7 +70,9 @@
     </tr>
   </tbody>
 </table>
-<table style="width:100%;border:1px;bordercolor=#27AE60;">
+<br/>
+
+<table style="width:100%;border:1px;bordercolor=#27AE60;font-size:11px;">
       <tr>
           <td style="width:20%;border:1px solid black;"><strong>ELABORADOR POR:</strong> <br/><br/><br/></td>
           <td style="width:20%;border:1px solid black;"><strong>REVISADO POR:</strong> <br/><br/><br/></td>
@@ -81,8 +83,7 @@
 </div>
 					
 				</t>
-			</t>
-	
+
 
 		</template>
 	</data>
