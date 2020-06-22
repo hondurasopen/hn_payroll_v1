@@ -35,7 +35,7 @@
   <td style="width:25%;"> </td>
 </tr>
 <tr>
-  <td style="width:25%;">Salrios Netos: <span t-field="o.gross_total"/></td>
+  <td style="width:25%;">Salrios Netos: <span t-field="o.net_total"/></td>
   <td style="width:25%;"> </td>
   <td style="width:25%;"></td>
   <td style="width:25%;"> </td>
