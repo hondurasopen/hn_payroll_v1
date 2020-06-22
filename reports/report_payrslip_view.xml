@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <openerp>
 <data>
-<template id="report_payrslip_view">	
+<template id="report_payrslip_view">
+  <t t-call="web.basic_layout">
 <t t-foreach="docs" t-as="o">
 			
 <div class="page">
@@ -48,6 +49,7 @@
           </table>
 </div>
 </div>					
+</t>
 </t>
 </template>
 </data>
