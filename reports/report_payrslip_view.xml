@@ -63,7 +63,7 @@
                   <p>Total Ingresos: </p>              
               </td>
               <td style="width:20%;" align="left">
-                  <strong><span t-field="l.amount_net"/></strong></p>
+                  <strong><span t-field="l.amount_net"/></strong>
               </td>
               
               <td style="width:30%;" align="center">             
