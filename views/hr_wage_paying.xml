@@ -2,6 +2,31 @@
 <openerp>
 <data>
 
+
+<record id="hr_wage_paying_line_form_view" model="ir.ui.view">
+<field name="name">hr.wage.paying.line.form.view</field>
+<field name="model">hr.wage.paying.line</field>
+<field name="arch"  type="xml">
+<form string="Salario y deducciones">
+<sheet>
+    <group>
+        <group>
+            <field name="start_date" readonly="1" />
+            <field name="employee_id" readonly="1"/>
+        </group>
+        <group>
+            <field name="end_date" readonly="1"/>
+            <field name="parent_id" readonly="1"/>
+        </group>
+    </group>
+
+</sheet>
+</form>
+</field>
+</record>   
+
+
+
 <record model="ir.ui.view" id="hr_wage_paying_line_tree_view">
  <field name="name">hr.wage.paying.line.tree.view</field>
  <field name="model">hr.wage.paying.line</field>
