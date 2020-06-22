@@ -9,6 +9,7 @@
   <p t-if = "i != 3" >
 
 <div class="page">
+   <div class="oe_structure"/>
 <div class="row">  
  <table style="width:100%;">
       <tr>
