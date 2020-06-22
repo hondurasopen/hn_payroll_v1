@@ -8,7 +8,7 @@
       <h2 class="text-center" style="font-weight:bold;">
         <span t-field="user.company_id.name"/>
       </h2>
-      <h4 class="text-center"><strong>Nómina:</strong></h4>
+      <h4 class="text-center"><strong>Nómina de: <span t-field="o.start_date"/> al: <span t-field="o.end_date"/> </strong></h4>
     </div>   
 
     <div class="footer">
@@ -31,22 +31,22 @@
 <table class="table table-condensed" style="width:100%;font-size:11px;">
   <thead style="background:gray;color:white;">
       <tr style="font-size:12px;">
-      <th class="text-center" style="width:15%;"><strong>Empleado</strong></th>
-      <th class="text-center" style="width:10%;"><strong>Salario</strong></th>
-      <th class="text-center" style="width:10%;"><strong>IHSS</strong></th>
-      <th class="text-center" style="width:10%;"><strong>Préstamo</strong></th>
-      <th class="text-center" style="width:15%;"><strong>Aporte Cooperativa</strong></th>
-      <th class="text-center" style="width:10%;"><strong>ISR</strong></th>
-      <th class="text-center" style="width:15%;"><strong>Total deducciones</strong></th>
-      <th class="text-center" style="width:15%;"><strong>Salario Neto</strong></th>
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Empleado</strong></th>
+      <th class="text-center" style="width:10%;border:1px solid black;"><strong>Salario</strong></th>
+      <th class="text-center" style="width:10%;border:1px solid black;"><strong>IHSS</strong></th>
+      <th class="text-center" style="width:10%;border:1px solid black;"><strong>Préstamo</strong></th>
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Aporte Cooperativa</strong></th>
+      <th class="text-center" style="width:10%;border:1px solid black;"><strong>ISR</strong></th>
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Total deducciones</strong></th>
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Salario Neto</strong></th>
       </tr>
   </thead>
   <tbody style="font-size:11px;">
     <tr t-foreach="o.employee_detail_ids" t-as="l">
-        <td class="text-left" style="width:20%;;border:1px solid black;">
+        <td class="text-left" style="width:20%;border:1px solid black;">
             <span t-field="l.employee_id.name"/>
         </td>
-        <td class="text-center" style="width:10%;;border:1px solid black;">
+        <td class="text-center" style="width:10%;border:1px solid black;">
             <span t-field="l.wage"/>
         </td>
         <td class="text-center" style="width:10%;;border:1px solid black;">
