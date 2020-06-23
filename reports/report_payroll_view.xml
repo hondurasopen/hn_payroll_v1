@@ -27,21 +27,7 @@
 
 					
 <div class="page">
-      <table style="font-size:12px; width:100%;">
-      <tr>
-        <td style="width:25%;"><strong>Total Salarios: <span t-field="o.gross_total"/></strong></td>
-        <td style="width:25%;"> </td>
-        <td style="width:25%;"><strong>Total Deducciones: <span t-field="o.gross_total"/></strong></td>
-        <td style="width:25%;"> </td>
-      </tr>
-      <tr>
-        <td style="width:25%;"><strong>Salarios Netos: <span t-field="o.net_total"/></strong></td>
-        <td style="width:25%;"> </td>
-        <td style="width:25%;"></td>
-        <td style="width:25%;"> </td>
-      </tr>
-      </table>
-<br/>
+
 <table class="table table-condensed" style="width:100%;font-size:11px;">
   <thead style="background:gray;color:white;">
       <tr style="font-size:12px;">
@@ -50,8 +36,8 @@
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>IHSS</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>Préstamo</strong></th>
       <th class="text-center" style="width:15%;border:1px solid black;"><strong>Aporte Cooperativa</strong></th>
+      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Ahorro Navideño</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>ISR</strong></th>
-      <th class="text-center" style="width:15%;border:1px solid black;"><strong>Total deducciones</strong></th>
       <th class="text-center" style="width:15%;border:1px solid black;"><strong>Salario Neto</strong></th>
       </tr>
   </thead>
@@ -64,19 +50,19 @@
             <span t-field="l.wage"/>
         </td>
         <td class="text-center" style="width:10%;;border:1px solid black;">
+            <span t-field="l.amount_ihss"/>
+        </td>
+        <td class="text-center" style="width:10%;;border:1px solid black;">
             <span t-field="l.loan_fee"/>
         </td>
         <td class="text-center" style="width:10%;;border:1px solid black;">
             <span t-field="l.saving_fee"/>
         </td>
         <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="l.amount_isr"/>
-        </td>
-        <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="l.other_deductions"/>
+            <span t-field="l.saving_special"/>
         </td>
         <td class="text-center" style="width:15%;;border:1px solid black;">
-            <span t-field="l.amount_deduction"/>
+            <span t-field="l.total_isr"/>
         </td>
         <td class="text-center" style="width:15%;;border:1px solid black;">
             <span t-field="l.amount_net"/>
@@ -85,7 +71,21 @@
   </tbody>
 </table>
 <br/>
-
+ <table style="font-size:12px; width:100%;">
+      <tr>
+        <td style="width:25%;"><strong>Total Salarios: <span t-field="o.gross_total"/></strong></td>
+        <td style="width:25%;"> </td>
+        <td style="width:25%;"><strong>Total Deducciones: <span t-field="o.gross_total"/></strong></td>
+        <td style="width:25%;"> </td>
+      </tr>
+      <tr>
+        <td style="width:25%;"><strong>Salarios Netos: <span t-field="o.net_total"/></strong></td>
+        <td style="width:25%;"> </td>
+        <td style="width:25%;"></td>
+        <td style="width:25%;"> </td>
+      </tr>
+</table>
+<br/>
 <table style="width:100%;border:1px;bordercolor=#27AE60;font-size:11px;">
       <tr>
           <td style="width:20%;border:1px solid black;"><strong>ELABORADOR POR:</strong> <br/><br/><br/></td>

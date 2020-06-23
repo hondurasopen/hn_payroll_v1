@@ -58,6 +58,7 @@
         <field name="amount_ihss" sum="Total"/>
         <field name="loan_fee" sum="Total"/>
         <field name="saving_fee" sum="Total"/>
+         <field name="saving_special" sum="Total"/>
         <field name="amount_isr" sum="Total"/>
         <field name="amount_ipv" sum="Total"/>
         <field name="other_deductions" sum="Total"/>
@@ -79,6 +80,7 @@
         <field name="amount_ihss" sum="Total"/>
         <field name="loan_fee" sum="Total"/>
         <field name="saving_fee" sum="Total"/>
+         <field name="saving_special" sum="Total"/>
         <field name="amount_isr" sum="Total"/>
         <field name="amount_ipv" sum="Total"/>
         <field name="other_deductions" sum="Total"/>
@@ -156,11 +158,12 @@
                     <field name="amount_ihss" sum="Total"/>
                     <field name="loan_fee" sum="Total"/>
                     <field name="saving_fee" sum="Total"/>
+                    <field name="saving_special" sum="Total"/>
                     <field name="amount_isr" sum="Total"/>
                     <field name="amount_ipv" sum="Total"/>
                     <field name="other_deductions"/>
                     <field name="gross_wage" sum="Total" />
-                    <field name="amount_deduction" sum="Total" />
+                    <field name="amount_deduction" sum="Total"/>
                     <field name="amount_net" sum="Total"/>
                 </tree>
             </field>
@@ -176,6 +179,7 @@
                  <field name="total_isr" />
                  <field name="total_ipv" />
                  <field name="total_saving_fee" />
+                 <field name="total_saving_special" />
                  <field name="total_loan" />
                  <field name="total_other_deducction" />
         </group>
