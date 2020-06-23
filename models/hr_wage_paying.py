@@ -22,6 +22,7 @@ class HrPrePayroll(models.Model):
 
     gross_total = fields.Float("Salario Bruto", readonly=True)
     net_total = fields.Float("Neto salarios", readonly=True)
+    total_rap = fields.Float("Total RAP", readonly=True)
     total_isr = fields.Float("Impuesto sobe renta", readonly=True)
     total_ihss = fields.Float("Total IHSS", readonly=True)
     total_ipv = fields.Float("Impuesto vecinal", readonly=True)
@@ -41,6 +42,7 @@ class HrPrePayroll(models.Model):
     def back_to_draft(self):
         self.gross_total = 0
         self.net_total = 0
+        self.total_rap = 0
         self.total_loan = 0
         self.total_isr = 0
         self.total_ipv = 0
@@ -69,6 +71,7 @@ class HrPrePayroll(models.Model):
                 self.total_isr += l.amount_isr
                 self.total_ihss += l.amount_ihss
                 self.total_ipv += l.amount_ipv
+                self.total_rap += l.amount_rap
                 self.total_saving_fee += l.saving_fee
                 self.total_saving_special += l.saving_special
                 self.total_other_deducction += l.other_deductions            
@@ -92,6 +95,8 @@ class HrPrePayroll(models.Model):
                     vals['amount'] = self.total_saving_special
                 if concept.concept == 'ipv':
                     vals['amount'] = self.total_ipv
+                if concept.concept == 'rap':
+                    vals["amount"] = self.total_rap
                 if concept.concept == 'ihss':
                     vals['amount'] = self.total_ihss
                 if concept.concept == 'isr':
@@ -156,7 +161,7 @@ class HrPrePayroll(models.Model):
                         'debit': 0.0,
                         'credit': self.total_saving_special,
                         'amount_currency': 0.0,
-                        'name': 'Planilla aportes cooperativa',
+                        'name': 'Planilla ahorro navideño',
                         'account_id': l.concept_id.account_id.id,
                         'date': self.end_date,
                     }
@@ -171,6 +176,16 @@ class HrPrePayroll(models.Model):
                         'date': self.end_date,
                     }
                     lineas.append((0, 0, vals_ihss))
+                if l.concept_id.concept == 'rap' and self.total_rap > 0:
+                    vals_rap = {
+                        'debit': 0.0,
+                        'credit': self.total_rap,
+                        'amount_currency': 0.0,
+                        'name': 'Planilla empleados RAP',
+                        'account_id': l.concept_id.account_id.id,
+                        'date': self.end_date,
+                    }
+                    lineas.append((0, 0, vals_rap))
                 if l.concept_id.concept == 'isr' and self.total_isr > 0:
                     vals_isr = {
                         'debit': 0.0,
@@ -229,6 +244,9 @@ class HrPrePayroll(models.Model):
             if employee.amount_ihss > 0:
                 concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'ihss'), ('structure_id', '=', self.structure_id.id)], limit=1)
                 self.create_historical(contract_obj.id, concept_obj.concept_type, employee.amount_ihss, concept_obj.id)
+            if employee.amount_rap > 0:
+                concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'rap'), ('structure_id', '=', self.structure_id.id)], limit=1)
+                self.create_historical(contract_obj.id, concept_obj.concept_type, employee.amount_rap, concept_obj.id)
             if employee.loan_fee > 0:
                 concept_obj = self.env["hr.contract.concepts.deductions"].search([('concept', '=', 'loan'), ('structure_id', '=', self.structure_id.id)], limit=1)
                 self.create_historical(contract_obj.id, concept_obj.concept_type, employee.loan_fee, concept_obj.id)
@@ -316,7 +334,7 @@ class HrPrePayrollLine(models.Model):
     @api.depends("gross_wage", "loan_fee", "saving_fee", "amount_isr", "amount_ipv", "other_incomes", "other_deductions")
     def _compute_amount(self):
     	self.gross_wage = self.wage + self.other_incomes 
-    	self.amount_deduction = self.loan_fee + self.saving_special + self.saving_fee + self.amount_isr + self.amount_ipv + self.other_deductions + self.amount_ihss
+    	self.amount_deduction = self.loan_fee + self.amount_rap + self.saving_special + self.saving_fee + self.amount_isr + self.amount_ipv + self.other_deductions + self.amount_ihss
     	self.amount_net = self.gross_wage - self.amount_deduction
 
     parent_id = fields.Many2one("hr.wage.paying", "Nómina")
@@ -327,6 +345,7 @@ class HrPrePayrollLine(models.Model):
     saving_fee = fields.Float("Aporte Cooperativa")
     saving_special = fields.Float("Ahorro navideño")
     amount_isr = fields.Float("ISR")
+    amount_rap = fields.Float("RAP")
     amount_ipv = fields.Float("Impuesto Vecinal")
     other_deductions = fields.Float("Otra deducción")
     other_incomes = fields.Float("Otros ingresos")
