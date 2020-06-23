@@ -23,6 +23,8 @@
         "reports/report_payrslip_view.xml",
     ],
     'update_xml': [
+            "security/groups.xml",
+            "security/ir.model.access.csv"
     ],
     'application': True,
 }

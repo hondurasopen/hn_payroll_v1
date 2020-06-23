@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?> 
 <odoo>
 	<data>
-		<record model="ir.module.category" id="rrhh_mgm_aplicativos_category">
-  			<field name="name">Permisos RRHH Tools</field> 
-  			<field name="description">Modulo RRHH Tools</field> 
-  			<field name="sequence">4</field> 
+		<record model="ir.module.category" id="hn_payroll_category_security">
+  			<field name="name">Gestión de Nómina</field> 
+  			<field name="description">Gestión de Nómina</field> 
+  			<field name="sequence">10</field> 
   		</record>
 
-  		<record id="grupo_rrhh_mgm_capacitacion_manager" model="res.groups">
-  			<field name="category_id" ref="rrhh_mgm_aplicativos_category" /> 
-  			<field name="name">Permisos Manager Capacitaciones</field> 
+  		<record id="group_hn_payroll_mgmt" model="res.groups">
+  			<field name="category_id" ref="hn_payroll_category_security" /> 
+  			<field name="name">Permisos Manager Nómina</field> 
   		</record>
 
-  		<record id="grupo_rrhh_mgm_capacitacion_user" model="res.groups">
-  			<field name="category_id" ref="rrhh_mgm_aplicativos_category" /> 
-  			<field name="name">Permisos Restringido Capacitaciones</field> 
+  		<record id="group_hn_payroll_basic" model="res.groups">
+  			<field name="category_id" ref="hn_payroll_category_security" /> 
+  			<field name="name">Permisos Restringido Nómina</field> 
   		</record>
 
   	</data>

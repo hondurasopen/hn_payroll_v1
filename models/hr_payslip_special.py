@@ -26,6 +26,3 @@ class HrPrePayroll(models.Model):
     amount_deduction = fields.Float("Total de deducciones", compute='_compute_amount')
     amount_net = fields.Float("Neto a pagar", compute='_compute_amount')
 
-    
-class HrPrePayslipSpecial(models.Model):
-    _name = 'hr.payslip.special'
