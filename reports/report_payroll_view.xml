@@ -74,28 +74,28 @@
     </tr>
     <tr>
       <td style="width:20%;border:1px solid black;">
-          <strong>Total</strong>
+          <strong></strong>
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="o..gross_total"/>
+            <span t-field="o.gross_total"/>
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="o..total_ihss"/>
+            <span t-field="o.total_ihss"/>
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="o..total_loan"/>
+            <span t-field="o.total_loan"/>
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="o..total_saving_fee"/>
+            <span t-field="o.total_saving_fee"/>
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="o..total_saving_special"/>
+            <span t-field="o.total_saving_special"/>
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="o..total_isr"/>
+            <span t-field="o.total_isr"/>
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
-            <span t-field="o..net_total"/>
+            <span t-field="o.net_total"/>
       </td>
     </tr>
   </tbody>
