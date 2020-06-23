@@ -76,7 +76,7 @@
   <table style="width:100%;">
       <tr>              
         <td style="width:30%;" align="left">             
-            <p>Sueldo Base: </p>              
+            <p>Sueldo: </p>              
         </td>
         <td style="width:20%;" align="left">
            <strong> <span t-field="o.wage"/></strong>
