@@ -4,7 +4,17 @@
 <template id="report_payrslip_view">
 <t t-call="report.html_container">
 <t t-foreach="docs" t-as="o">
-
+<div class="header">
+    <div class="col-xs-2">
+          <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="height:120px;"/>
+    </div>
+    <div class="col-xs-9 text-right" style="margin-top:20px;">
+        <p>  <h3 class="text-right" style="font-weight:bold;">
+              VOUCHER DE PAGO
+          </h3>
+        </p>
+    </div>
+</div>
 
 <div class="page">
    <div class="oe_structure"/>
