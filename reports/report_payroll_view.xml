@@ -79,7 +79,7 @@
       <tr>
         <td style="width:25%;"><strong>Total Salarios: <span t-field="o.gross_total"/></strong></td>
         <td style="width:25%;"> </td>
-        <td style="width:25%;"><strong>Total Deducciones:   <t t-esc="'{0:,.2f}'.format(o.gross_total - o.net_tota)"/> </strong></td>
+        <td style="width:25%;"><strong>Total Deducciones:   <t t-esc="'{0:,.2f}'.format(o.gross_total - o.net_total)"/> </strong></td>
         <td style="width:25%;"> </td>
       </tr>
       <tr>
