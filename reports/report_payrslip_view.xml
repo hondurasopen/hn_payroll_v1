@@ -25,7 +25,7 @@
 <div class="page">
    <div class="oe_structure"/>
 <div class="row"> 
-  <p><h3><strong>Planilla: </strong>  <span t-field="o.parent_id.name"/></h3> </p>
+  <p><h3 class="text-center"><strong> <span t-field="o.parent_id.name"/></strong>  </h3> </p>
  <table style="width:100%;">
       <tr>
         <td class="text-left" style="width:60%;">            
