@@ -109,7 +109,7 @@
           <span t-field="o.total_rap"/>
       </td>
        <td class="text-center" style="width:10%;;border:1px solid black;">
-          <span t-field="o.amount_deduction"/>
+          <t t-esc="'{0:,.2f}'.format(o.gross_total - o.net_total)"/> 
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
           <span t-field="o.net_total"/>
