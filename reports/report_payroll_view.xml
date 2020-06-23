@@ -62,7 +62,7 @@
             <span t-field="l.saving_special"/>
         </td>
         <td class="text-center" style="width:15%;;border:1px solid black;">
-            <span t-field="l.total_isr"/>
+            <span t-field="l.amount_isr"/>
         </td>
         <td class="text-center" style="width:15%;;border:1px solid black;">
             <span t-field="l.amount_net"/>
