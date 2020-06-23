@@ -24,7 +24,8 @@
 
 <div class="page">
    <div class="oe_structure"/>
-<div class="row">  
+<div class="row"> 
+    <hr/>
  <table style="width:100%;">
       <tr>
         <td class="text-left" style="width:60%;">            
@@ -60,6 +61,7 @@
 </table>
 </div>
 <br/>
+   <hr/>
 <div class="row">
     <table style="width:100%;">
       <tr>
@@ -158,6 +160,7 @@
       </tr>
     </table>
   <br/>
+   <hr/>
       <table style="width:100%;">
             <tr>              
               <td style="width:30%;" align="center">             
@@ -185,9 +188,6 @@
           <td class="text-right" style="width:100%;"><strong>Recibi conforme:_______________________________________</strong> </td>          
         </tr>
     </table>   
-    <br/>
-     <br/>
-   <hr/>
 </div>
 
 </div>
