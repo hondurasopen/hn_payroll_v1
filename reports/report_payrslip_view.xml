@@ -75,8 +75,14 @@
   </table>
   <table style="width:100%;">
       <tr>              
-        <td style="width:30%;" align="left">             
-            <p>Sueldo: </p>              
+
+        <td style="width:30%;" align="left">  
+            <span t-if="o.parent_id.payroll_type == 'bi-weekly'">           
+              <p>Salario Quincenal: </p>              
+            </span>
+            <span t-if="o.parent_id.payroll_type == 'monthly'">           
+              <p>Salario Mensual: </p>              
+            </span>
         </td>
         <td style="width:20%;" align="left">
            <strong> <span t-field="o.wage"/></strong>

@@ -8,7 +8,7 @@
       <h3 class="text-center" style="font-weight:bold;">
         <span t-field="user.company_id.name"/>
       </h3>
-      <h4 class="text-center"><strong>Nómina del: <span t-field="o.start_date"/> al: <span t-field="o.end_date"/> </strong></h4>
+      <h4 class="text-center"><strong>Planilla del: <span t-field="o.start_date"/> al: <span t-field="o.end_date"/> </strong></h4>
     </div>   
 
     <div class="footer">
@@ -33,13 +33,18 @@
       <tr style="font-size:12px;">
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>Empleado</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>Identidad</strong></th>
-      <th class="text-center" style="width:10%;border:1px solid black;"><strong>Salario</strong></th>
-      <th class="text-center" style="width:10%;border:1px solid black;"><strong>IHSS</strong></th>
+      <span t-if="o.payroll_type == 'bi-weekly'">
+          <th class="text-center" style="width:10%;border:1px solid black;"><strong>Salario Quincenal</strong></th>
+      </span>
+      <span t-if="o.payroll_type == 'monthly'">
+          <th class="text-center" style="width:10%;border:1px solid black;"><strong>Salario</strong></th>
+      </span>
+      <th class="text-center" style="width:5%;border:1px solid black;"><strong>IHSS</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>Préstamo</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>Aporte Cooperativa</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>Ahorro Navideño</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>ISR</strong></th>
-      <th class="text-center" style="width:10%;border:1px solid black;"><strong>RAP</strong></th>
+      <th class="text-center" style="width:5%;border:1px solid black;"><strong>RAP</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>Total Deducciones</strong></th>
       <th class="text-center" style="width:10%;border:1px solid black;"><strong>Salario Neto</strong></th>
       </tr>
@@ -55,7 +60,7 @@
         <td class="text-center" style="width:10%;border:1px solid black;">
             <span t-field="l.wage"/>
         </td>
-        <td class="text-center" style="width:10%;;border:1px solid black;">
+        <td class="text-center" style="width:5%;;border:1px solid black;">
             <span t-field="l.amount_ihss"/>
         </td>
         <td class="text-center" style="width:10%;;border:1px solid black;">
@@ -70,7 +75,7 @@
         <td class="text-center" style="width:10%;;border:1px solid black;">
             <span t-field="l.amount_isr"/>
         </td>
-         <td class="text-center" style="width:10%;;border:1px solid black;">
+         <td class="text-center" style="width:5%;;border:1px solid black;">
             <span t-field="l.amount_rap"/>
         </td>
         <td class="text-center" style="width:10%;;border:1px solid black;">
@@ -90,7 +95,7 @@
       <td class="text-center" style="width:10%;;border:1px solid black;">
           <span t-field="o.gross_total"/>
       </td>
-      <td class="text-center" style="width:10%;;border:1px solid black;">
+      <td class="text-center" style="width:5%;;border:1px solid black;">
           <span t-field="o.total_ihss"/>
       </td>
       <td class="text-center" style="width:10%;;border:1px solid black;">
@@ -105,7 +110,7 @@
       <td class="text-center" style="width:10%;;border:1px solid black;">
           <span t-field="o.total_isr"/>
       </td>
-       <td class="text-center" style="width:10%;;border:1px solid black;">
+       <td class="text-center" style="width:5%;;border:1px solid black;">
           <span t-field="o.total_rap"/>
       </td>
        <td class="text-center" style="width:10%;;border:1px solid black;">
