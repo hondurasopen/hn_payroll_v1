@@ -123,12 +123,12 @@
 <field name="arch"  type="xml">
 <form string="Salario y deducciones">
 <header>
-    <button name="return_to_validated" type="object" string="Reversar partida" states="done" class="oe_highlight" />
-    <button name="back_to_draft" type="object" string="Volver a borrador" states="validated" class="oe_highlight" />
-     <button name="get_employee" type="object" string="Obtener Empleados" states="draft" class="oe_highlight" />
-      <button name="create_journal_entrie" type="object" string="Aprobar" states="validated" class="oe_highlight" />
-     <button name="set_amounts" type="object" string="Procesar Nómina" states="draft" class="oe_highlight" />
-    <field name="state" widget="statusbar" nolabel="1"/>
+        <button name="return_to_validated" type="object" string="Reversar partida" states="done" class="oe_highlight" />
+        <button name="back_to_draft" type="object" string="Volver a borrador" states="validated" class="oe_highlight" />
+        <button name="get_employee" type="object" string="Obtener Empleados" states="draft" class="oe_highlight" />
+        <button name="create_journal_entrie" type="object" string="Aprobar" states="validated" class="oe_highlight" groups="hn_payroll_v1.group_hn_payroll_approval"/>
+        <button name="set_amounts" type="object" string="Procesar Nómina" states="draft" class="oe_highlight" />
+        <field name="state" widget="statusbar" nolabel="1"/>
 </header>
 <sheet>
     <div class="oe_right oe_button_box" position="inside">
